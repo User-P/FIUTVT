@@ -43,7 +43,7 @@ class StoreScreen{
     btncomp.display();
     btnvend.display();
     btncont.display();
-    pers.drawTradeData();
+    player.drawTradeData();
     if(trademode)
       flipYImage(imgtrademode,400,400);
     else
@@ -98,17 +98,17 @@ class StoreScreen{
 }
   
   void buyItem(int i){
-    if(pers.cash>=getItemVCost(i)){
-      pers.cash-=getItemVCost(i);
-      pers.updateInv(i,trademode);
+    if(player.cash>=getItemVCost(i)){
+      player.cash-=getItemVCost(i);
+      player.updateInv(i,trademode);
       sfxcash.play(); 
     }
   }
   
   void sellItem(int i){
-    if(pers.getItemInv(i)>0){
-      pers.cash+=getItemCCost(i);
-      pers.updateInv(i,trademode);
+    if(player.getItemInv(i)>0){
+      player.cash+=getItemCCost(i);
+      player.updateInv(i,trademode);
       sfxcash.play();
     }
   }

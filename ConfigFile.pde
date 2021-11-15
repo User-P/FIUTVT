@@ -8,9 +8,9 @@ class ConfigFile{
   String file[];
   int lang;
   int ns;
-  int ppa;
-  int minatr;
-  int maxatr;
+  int pointsnotassigned;
+  int minimumpoints;
+  int maximunpoints;
   int bsqodd;
   int pstodd;
   int trrodd;
@@ -37,12 +37,12 @@ class ConfigFile{
         lang=(int(split(file[i],'=')[1]));
       if(split(file[i],'=')[0].equals("#langstr"))
         ns=(int(split(file[i],'=')[1]));
-      if(split(file[i],'=')[0].equals("#ppa"))
-        ppa=(int(split(file[i],'=')[1]));
-      if(split(file[i],'=')[0].equals("#minatr"))
-        minatr=(int(split(file[i],'=')[1]));  
-      if(split(file[i],'=')[0].equals("#maxatr"))
-        maxatr=(int(split(file[i],'=')[1]));
+      if(split(file[i],'=')[0].equals("#pointsnotassigned"))
+        pointsnotassigned=(int(split(file[i],'=')[1]));
+      if(split(file[i],'=')[0].equals("#minimumpoints"))
+        minimumpoints=(int(split(file[i],'=')[1]));  
+      if(split(file[i],'=')[0].equals("#maximunpoints"))
+        maximunpoints=(int(split(file[i],'=')[1]));
       if(split(file[i],'=')[0].equals("#bsqodd"))
         bsqodd=(int(split(file[i],'=')[1]));
       if(split(file[i],'=')[0].equals("#pstodd"))
@@ -75,8 +75,8 @@ class ConfigFile{
     String save="";
     save=save+"#language="+lang+";";
     save=save+"#langstr="+ns+";";
-    save=save+"#ppa="+ppa+";";
-    save=save+"#minatr="+minatr+";";
+    save=save+"#pointsnotassigned="+pointsnotassigned+";";
+    save=save+"#minimumpoints="+minimumpoints+";";
     save=save+"#bsqodd="+bsqodd+";";
     save=save+"#pstodd="+pstodd+";";
     save=save+"#trrodd="+trrodd+";";

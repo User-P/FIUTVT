@@ -23,16 +23,19 @@ final int STORE=11;
 final int LGSPA=0;
 final int LGENG=1;
 
-final int ATATK=1;
-final int ATDEF=2;
-final int ATHPM=3;
-final boolean ATUP=true;
-final boolean ATDN=false;
-final int CLAWA=0;
-final int CLTRR=1;
-final int CLBSQ=2;
-final int CLPST=3;
-final int CLTND=4;
+final int ATTACK=1;
+final int DEFENSE=2;
+final int HP=3;
+
+final boolean ATTRUP=true;
+final boolean ATTRDOWN=false;
+
+final int WATER=0;
+final int GROUND=1;
+final int FOREST=2;
+final int GRASS=3;
+final int SHOP=4;
+
 final boolean MSCON=true;
 final boolean MSCOFF=false;
 final int ITPTN=0;
@@ -50,12 +53,12 @@ final int ACITM=2;
 final boolean TURNP=true;
 final boolean TURNE=false;
 
-color paleta[];
+color palette[];
 PImage terreno[];
 PImage imgbackgr;
 PImage imgatk;
 PImage imgdef;
-PImage imghpm;
+PImage imghp;
 PImage imgpotn;
 PImage imgfptn;
 PImage imgtonic;
@@ -79,13 +82,13 @@ GameControl gc;
 PFont fbase;
 LangFiles lf;
 ConfigFile cf;
-Personaje pers;
+Character player;
 
 void setup(){
   size(800,800);
   frameRate(60);
-  createPal();
-  createTerreno();
+  createPalette();
+  createTerrain();
   gmode=true;
   
   fbase=createFont("MesloLGS NF",24);
@@ -93,7 +96,7 @@ void setup(){
 
   imgatk=loadImage("sprite/icon/icon_atk.png");
   imgdef=loadImage("sprite/icon/icon_def.png");
-  imghpm=loadImage("sprite/icon/icon_hpm.png");
+  imghp=loadImage("sprite/icon/icon_hpm.png");
   imgpotn=loadImage("sprite/items/potion.png");
   imgfptn=loadImage("sprite/items/full potion.png");
   imgtonic=loadImage("sprite/items/tonic.png");
@@ -118,22 +121,22 @@ void keyReleased(){
   gc.keyProcess(key);
 }
 
-void createPal(){
-  paleta=new color[5];
-  paleta[CLAWA]=color(164,218,247);
-  paleta[CLTRR]=color(150,113, 75);
-  paleta[CLBSQ]=color( 88,138, 87);
-  paleta[CLPST]=color( 91,244,103);
-  paleta[CLTND]=color(105, 37,231);
+void createPalette(){
+  palette=new color[5];
+  palette[WATER]=color(164,218,247);
+  palette[GROUND]=color(150,113, 75);
+  palette[FOREST]=color( 88,138, 87);
+  palette[GRASS]=color( 91,244,103);
+  palette[SHOP]=color(105, 37,231);
 }
 
-void createTerreno(){
+void createTerrain(){
   terreno=new PImage[5];
-  terreno[CLAWA]=loadImage("sprite/terreno/agua_ok.png");
-  terreno[CLTRR]=loadImage("sprite/terreno/tierra_ok.png");
-  terreno[CLBSQ]=loadImage("sprite/terreno/bosque_ok.png");
-  terreno[CLPST]=loadImage("sprite/terreno/pasto_ok.png");
-  terreno[CLTND]=loadImage("sprite/terreno/tienda_ok.png");
+  terreno[WATER]=loadImage("sprite/terreno/agua_ok.png");
+  terreno[GROUND]=loadImage("sprite/terreno/tierra_ok.png");
+  terreno[FOREST]=loadImage("sprite/terreno/bosque_ok.png");
+  terreno[GRASS]=loadImage("sprite/terreno/pasto_ok.png");
+  terreno[SHOP]=loadImage("sprite/terreno/tienda_ok.png");
 }
 
 void loadAudio(){
@@ -151,7 +154,7 @@ void loadAudio(){
   msccreat=minim.loadFile("sound/music/creation.mp3");
   mscvctry=minim.loadFile("sound/music/victory.mp3");
   msccombt=minim.loadFile("sound/music/combate.mp3");
-  mscmundo=minim.loadFile("sound/music/mapa.mp3");
+  mscmundo=minim.loadFile("sound/music/map.mp3");
   mscintro.setGain(0.05);
   //mscintro.shiftGain(mscintro.getGain(),0.1,100);
   /*msccreds.shiftGain(msccreds.getGain(),0,1);

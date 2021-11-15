@@ -36,7 +36,7 @@ class CombatScreen{
   void display(){
     music();
     startBattle();
-    selectBackgr(pers.terr);
+    selectBackgr(player.terr);
     fill(255);
     text(lf.showString(7),400,100);
     displayPlanoControl();
@@ -44,7 +44,7 @@ class CombatScreen{
     displayPlanoHUD();
     if(cdt.isActive())
       cdt.coolingDown();    
-    if(pers.cdtturn.isOff()){
+    if(player.cdtturn.isOff()){
       btnatk.activate();
       btndef.activate();
       btnitem.activate();
@@ -52,8 +52,8 @@ class CombatScreen{
         enemy.cdtturn.toggleCoolDown();
     }
     if(enemy.cdtturn.isOff()){
-      if(pers.cdtturn.isActive())
-        pers.cdtturn.toggleCoolDown();
+      if(player.cdtturn.isActive())
+        player.cdtturn.toggleCoolDown();
       enemyAction();
     }
     if(cdt.isActive())
@@ -68,17 +68,17 @@ class CombatScreen{
   
   void selectBackgr(int t){
     switch(t){
-      case CLBSQ: background(woods);
+      case FOREST: background(woods);
                   break;
-      case CLPST: background(pasto);
+      case GRASS: background(pasto);
                   break;
-      case CLTRR: background(desrt);
+      case GROUND: background(desrt);
                   break;            
     }
   }
   
   void displayPlanoBatalla(){
-    pers.battleDisplay();
+    player.battleDisplay();
     displayEnemies();
   }
   
@@ -126,13 +126,13 @@ class CombatScreen{
       createEnemies();
       battleactive=BATTLEON;
       turn=TURNP;
-      pers.activateCombat();
+      player.activateCombat();
       enemy.activateCombat();
     }  
   }
   
   void createEnemies(){
-    enemy=new Enemigo(pers.terr);  
+    enemy=new Enemigo(player.terr);  
   }
   
   void toggleAction(){
@@ -160,7 +160,7 @@ class CombatScreen{
     btndef.deactivate();
     btnitem.deactivate();
     toggleMarks();
-    pers.cdtturn.activate();
+    player.cdtturn.activate();
     toggleAction();
     enemy.cdtturn.toggleCoolDown();
     toggleTurn();
@@ -173,13 +173,13 @@ class CombatScreen{
   void enemyAction(){
     println("acción del enemigo");
     cdt.activate();
-    //pers.cdtturn.toggleCoolDown();
+    //player.cdtturn.toggleCoolDown();
   }
   
   void enemyEndAction(){
     println("fin acción del enemigo");
     enemy.cdtturn.activate();
-    pers.cdtturn.toggleCoolDown();
+    player.cdtturn.toggleCoolDown();
     toggleTurn();
   }
   

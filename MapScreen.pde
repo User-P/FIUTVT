@@ -4,7 +4,7 @@
 //fecha de ultima modificación: 6 de noviembre de 2021 
 //comentario:
 class MapScreen{
-  int mapa[][]={{0,0,0,0,0,0,0,0,0,0},
+  int map[][]={{0,0,0,0,0,0,0,0,0,0},
                 {0,1,1,1,1,1,1,1,1,0},
                 {0,1,2,2,2,3,3,3,1,0},
                 {0,1,2,0,2,3,4,3,1,0},
@@ -43,26 +43,26 @@ class MapScreen{
     text(lf.showString(14),400,100);
     rectMode(CENTER);
     imageMode(CENTER);
-    displayPlanoMapa();
+    displayPlanomap();
     displayPlanoPers();
     displayPlanoSky();
     displayPlanoHUD(); //Heads-Up Display
   }
   
-  void displayPlanoMapa(){
+  void displayPlanomap(){
     for(int i=0;i<mx;i++)
       for(int j=0;j<my;j++)
         if(gmode)
-          image(terreno[mapa[j][i]],40+i*80,40+j*80);
+          image(terreno[map[j][i]],40+i*80,40+j*80);
         else{
-          stroke(paleta[mapa[j][i]]);
-          fill(paleta[mapa[j][i]]);
+          stroke(palette[map[j][i]]);
+          fill(palette[map[j][i]]);
           rect(40+i*80,40+j*80,80,80);
         }
   }
   
   void displayPlanoPers(){
-    pers.display();
+    player.display();
   }
   
   void displayPlanoSky(){
@@ -78,20 +78,20 @@ class MapScreen{
     image(imgcash,50,740);
     image(imgatk,130,740);
     image(imgdef,210,740);
-    image(imghpm,290,740);
+    image(imghp,290,740);
     image(imgpotn,590,740);
     image(imgfptn,670,740);
     image(imgtonic,750,740);
     fill(255);
-    text("$"+pers.cash,50,780);
-    text(pers.atk,130,780);
-    text(pers.def,210,780);
-    text(pers.potn,590,780);
-    text(pers.fptn,670,780);
-    text(pers.tonic,750,780);
+    text("$"+player.cash,50,780);
+    text(player.atk,130,780);
+    text(player.def,210,780);
+    text(player.potn,590,780);
+    text(player.fptn,670,780);
+    text(player.tonic,750,780);
     textAlign(LEFT,CENTER);
-    text(pers.hp+"/"+pers.hpp,315,740);
-    pers.drawLifeBar(265,768);
+    text(player.hp+"/"+player.hpp,315,740);
+    player.drawLifeBar(265,768);
     textAlign(CENTER,CENTER);
   }
   
@@ -113,19 +113,19 @@ class MapScreen{
       case 'G': gmode=!gmode;
                 break;
       case 'w':
-      case 'W': if(revisaRestringido(pers,UP))
+      case 'W': if(revisaRestringido(player,UP))
                   move(UP);
                 break;
       case 'a':
-      case 'A': if(revisaRestringido(pers,LEFT))
+      case 'A': if(revisaRestringido(player,LEFT))
                   move(LEFT);
                 break;
       case 's':
-      case 'S': if(revisaRestringido(pers,DOWN))
+      case 'S': if(revisaRestringido(player,DOWN))
                   move(DOWN);
                 break;
       case 'd':
-      case 'D': if(revisaRestringido(pers,RIGHT))
+      case 'D': if(revisaRestringido(player,RIGHT))
                   move(RIGHT);
                 break;
       case 'q':
@@ -135,31 +135,31 @@ class MapScreen{
                 noTint();
                 gc.setActiveScreen(PAUSE);
                 break;
-      case ' ': if(mapa[pers.py][pers.px]==CLTND){
+      case ' ': if(map[player.py][player.px]==SHOP){
                   gc.musicManager(MSCOFF);
                   gc.setActiveScreen(STORE);
                 }  
     }
   }
   
-  boolean revisaRestringido(Personaje p,int d){
+  boolean revisaRestringido(Character p,int d){
     boolean r=false;
     switch(d){
-      case UP:    r=mapa[p.py-1][p.px]!=CLAWA;
+      case UP:    r=map[p.py-1][p.px]!=WATER;
                   break;
-      case DOWN:  r=mapa[p.py+1][p.px]!=CLAWA;
+      case DOWN:  r=map[p.py+1][p.px]!=WATER;
                   break;
-      case LEFT:  r=mapa[p.py][p.px-1]!=CLAWA;
+      case LEFT:  r=map[p.py][p.px-1]!=WATER;
                   break;
-      case RIGHT: r=mapa[p.py][p.px+1]!=CLAWA;
+      case RIGHT: r=map[p.py][p.px+1]!=WATER;
                   break;         
     }
     return r;
   }
   
   void move(int d){
-    pers.move(d);
-    pers.setTerrain(mapa[pers.py][pers.px]);
+    player.move(d);
+    player.setTerrain(map[player.py][player.px]);
     if(generaCombate()){
       sfxfight.play();
       gc.musicManager(MSCOFF);
@@ -169,12 +169,12 @@ class MapScreen{
   
   boolean generaCombate(){
     boolean r=false;
-    switch(pers.terr){
-      case CLBSQ: r=random(1,100)<cf.bsqodd;
+    switch(player.terr){
+      case FOREST: r=random(1,100)<cf.bsqodd;
                   break;
-      case CLPST: r=random(1,100)<cf.pstodd;
+      case GRASS: r=random(1,100)<cf.pstodd;
                   break;
-      case CLTRR: r=random(1,100)<cf.trrodd;
+      case GROUND: r=random(1,100)<cf.trrodd;
                   break;
     }
     return r;

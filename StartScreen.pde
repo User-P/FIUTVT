@@ -7,14 +7,14 @@
 class StartScreen{
   Button btncred;
   Button btnconf;
-  Button btnplay;
-  Button btnexit;
+  Button play;
+  Button exit;
   
   StartScreen(){
     btncred=new Button(400,250,200,100,0);
     btnconf=new Button(400,400,200,100,1);
-    btnplay=new Button(400,550,200,100,2);
-    btnexit=new Button(400,700,200,100,23);
+    play=new Button(400,550,200,100,2);
+    exit=new Button(400,700,200,100,23);
   }
   
   void display(){
@@ -24,8 +24,8 @@ class StartScreen{
     text(lf.showString(12),400,100);
     btncred.display();
     btnconf.display();
-    btnplay.display();
-    btnexit.display();
+    play.display();
+    exit.display();
   }
   
   void mouseProcess(int x,int y,int b){
@@ -35,11 +35,11 @@ class StartScreen{
     }  
     if(btnconf.isClicked(x,y) && b==LEFT)
       gc.setActiveScreen(CONFIG);  
-    if(btnplay.isClicked(x,y) && b==LEFT){
+    if(play.isClicked(x,y) && b==LEFT){
       gc.musicManager(MSCOFF);
       gc.setActiveScreen(CREATION);
     }  
-    if(btnexit.isClicked(x,y) && b==LEFT)
+    if(exit.isClicked(x,y) && b==LEFT)
       exit();  
   }
 }

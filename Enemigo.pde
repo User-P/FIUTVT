@@ -25,9 +25,9 @@ class Enemigo{
   
   void display(){
     switch(terr){
-      case CLBSQ: fill(color(0,120,0));stroke(color(0,120,0));break;
-      case CLPST: fill(color(0,200,0));stroke(color(0,200,0));break;
-      case CLTRR: fill(color(170,0,0));stroke(color(170,0,0));break;
+      case FOREST: fill(color(0,120,0));stroke(color(0,120,0));break;
+      case GRASS: fill(color(0,200,0));stroke(color(0,200,0));break;
+      case GROUND: fill(color(170,0,0));stroke(color(170,0,0));break;
     }
     cdtturn.drawTimeBar(cx-80,cy+45);
     rect(cx,cy,40,80);  

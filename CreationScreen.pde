@@ -5,140 +5,138 @@
 //comentario:
 
 class CreationScreen{
-  Button btnatkp;
-  Button btndefp;
-  Button btnhpmp;
-  Button btnatkm;
-  Button btndefm;
-  Button btnhpmm;
-  Button btnexit;
-  Button btnplay;
+  Button increaseatk;
+  Button increasedef;
+  Button increasehp;
+  Button decreaseatk;
+  Button decreasedef;
+  Button decreasehp;
+  Button exit;
+  Button play;
+
   PImage imgcreat;
-  int ppa;
-  int minatr;
-  int maxatr;
-  boolean rst;
+  boolean reset;
+  int minimumpoints;
+  int maximunpoints;  
+  int pointsnotassigned;
   int atk;
   int def;
-  int hpm;
+  int hp;
     
   CreationScreen(ConfigFile cf){
-    btnatkp=new Button(630,250,50,50,17);
-    btnatkm=new Button(200,250,50,50,18);
-    btndefp=new Button(630,310,50,50,17);
-    btndefm=new Button(200,310,50,50,18);
-    btnhpmp=new Button(630,370,50,50,17);
-    btnhpmm=new Button(200,370,50,50,18);
-    btnexit=new Button(200,600,200,100,5);
-    btnplay=new Button(600,600,200,100,2);
-    btnatkp.activate();
-    btnatkm.activate();
-    btndefp.activate();
-    btndefm.activate();
-    btnhpmp.activate();
-    btnhpmm.activate();
-    btnexit.activate();
+    increaseatk=new Button(630,250,50,50,17);
+    decreaseatk=new Button(200,250,50,50,18);
+    increasedef=new Button(630,310,50,50,17);
+    decreasedef=new Button(200,310,50,50,18);
+    increasehp=new Button(630,370,50,50,17);
+    decreasehp=new Button(200,370,50,50,18);
+    exit=new Button(200,600,200,100,5);
+    play=new Button(600,600,200,100,2);
+    play.deactivate();
+
     imgcreat=loadImage("sprite/backgr/creation.jpg");
-    ppa=cf.ppa;
-    atk=def=hpm=minatr=cf.minatr;
-    maxatr=cf.maxatr;
-    rst=false;
+    pointsnotassigned=cf.pointsnotassigned;
+    atk=def=hp=minimumpoints=cf.minimumpoints;
+    maximunpoints=cf.maximunpoints;
+    reset=false;
   }
   
   void display(){
     music();
-    if(rst){
+    if(reset)
       resetAttr();
-      rst=false;
-    }
     background(imgcreat);
     fill(255);
-    btnatkp.display();
-    btnatkm.display();
-    btndefp.display();
-    btndefm.display();
-    btnhpmp.display();
-    btnhpmm.display();
-    btnexit.display();
-    btnplay.display();
+
+    increaseatk.display();
+    decreaseatk.display();
+    increasedef.display();
+    decreasedef.display();
+    increasehp.display();
+    decreasehp.display();
+    exit.display();
+    play.display();
+
     textAlign(CENTER,CENTER);
     text(lf.showString(9),400,100);
-    text(lf.showString(22)+ppa,400,500);
+    text(lf.showString(22)+pointsnotassigned,400,500);
     textAlign(LEFT,CENTER);
     text(lf.showString(19),50,250);
     text(lf.showString(20),50,310);
     text(lf.showString(21),50,370);
     imageMode(CENTER);
+
     for(int i=0;i<atk;i++)
       image(imgatk,260+50*i,250);
     for(int i=0;i<def;i++)
       image(imgdef,260+50*i,310);
-    for(int i=0;i<hpm;i++)
-      image(imghpm,260+50*i,370);
+    for(int i=0;i<hp;i++)
+      image(imghp,260+50*i,370);
   }
   
   void mouseProcess(int x,int y, int b){
-    if(btnatkp.isClicked(x,y) && b==LEFT)
-      addPoint(ATATK);
-    if(btnatkm.isClicked(x,y) && b==LEFT)
-      subPoint(ATATK);
-    if(btndefp.isClicked(x,y) && b==LEFT)
-      addPoint(ATDEF);
-    if(btndefm.isClicked(x,y) && b==LEFT)
-      subPoint(ATDEF);
-    if(btnhpmp.isClicked(x,y) && b==LEFT)
-      addPoint(ATHPM);
-    if(btnhpmm.isClicked(x,y) && b==LEFT)
-      subPoint(ATHPM);
-    if(btnexit.isClicked(x,y) && b==LEFT){
-      rst=true;
+    if(increaseatk.isClicked(x,y) && b==LEFT)
+      addPoint(ATTACK);
+    if(decreaseatk.isClicked(x,y) && b==LEFT)
+      subPoint(ATTACK);
+    if(increasedef.isClicked(x,y) && b==LEFT)
+      addPoint(DEFENSE);
+    if(decreasedef.isClicked(x,y) && b==LEFT)
+      subPoint(DEFENSE);
+    if(increasehp.isClicked(x,y) && b==LEFT)
+      addPoint(HP);
+    if(decreasehp.isClicked(x,y) && b==LEFT)
+      subPoint(HP);
+    if(exit.isClicked(x,y) && b==LEFT){
+      reset=true;
       gc.musicManager(MSCOFF);
       gc.setActiveScreen(START);
     }
-    if(btnplay.isClicked(x,y) && b==LEFT){
-      pers=new Personaje(atk,def,hpm,cf.cash,4,5);
-      rst=true;
+    if(play.isClicked(x,y) && b==LEFT){
+      player=new Character(atk,def,hp,cf.cash,4,5);
+      reset=true;
       gc.musicManager(MSCOFF);
       gc.setActiveScreen(MAP);
     }
   } 
     
   void addPoint(int a){
-    if(ppa>0 && getAttr(a)<maxatr){
-      modAttr(a,ATUP);
-      ppa--;
+    if(pointsnotassigned>0 && getAttr(a)<maximunpoints){
+      modAttr(a,ATTRUP);
+      pointsnotassigned--;
     }
-    if(ppa==0)
-      btnplay.activate();
+    if(pointsnotassigned==0)
+      play.activate();
   }
     
   void subPoint(int a){
-    if(getAttr(a)>minatr){
-      modAttr(a,ATDN);
-      ppa++;
+    if(getAttr(a)>minimumpoints){
+      modAttr(a,ATTRDOWN);
+      pointsnotassigned++;
     }
-    if(ppa>0)
-      btnplay.deactivate();
+    if(pointsnotassigned>0)
+      play.deactivate();
   }
   
   int getAttr(int a){
-    return (a==ATATK)?atk:(a==ATDEF)?def:hpm;
+    return (a==ATTACK)?atk:(a==DEFENSE)?def:hp;
   }
   
   void modAttr(int a, boolean e){
     switch(a){
-      case ATATK: atk+=(e)?1:-1;
+      case ATTACK: atk+=(e)?1:-1;
                   break;
-      case ATDEF: def+=(e)?1:-1;
+      case DEFENSE: def+=(e)?1:-1;
                   break;
-      case ATHPM: hpm+=(e)?1:-1;
+      case HP: hp+=(e)?1:-1;
                   break;
     }
   }
   
   void resetAttr(){
-    btnplay.deactivate();
-    ppa=cf.ppa;
-    atk=def=hpm=minatr;
+    play.deactivate();
+    pointsnotassigned=cf.pointsnotassigned;
+    atk=def=hp=minimumpoints;
+    reset=false;
   }
 }

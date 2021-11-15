@@ -5,25 +5,25 @@
 //comentario:
 
 class PauseScreen{
-  Button btnexit;
+  Button exit;
   Button btncont;
   
   PauseScreen(){
-    btnexit=new Button(200,600,200,100,23);
+    exit=new Button(200,600,200,100,23);
     btncont=new Button(600,600,200,100,5);
-    btnexit.activate();
+    exit.activate();
     btncont.activate();
   }
   
   void display(){
     fill(255);
     text(lf.showString(15),400,100);
-    btnexit.display();
+    exit.display();
     btncont.display();
   }
   
   void mouseProcess(int x,int y,int b){
-    if(btnexit.isClicked(x,y) && b==LEFT){
+    if(exit.isClicked(x,y) && b==LEFT){
       gc.musicManager(MSCOFF);
       gc.setActiveScreen(START);
     }  

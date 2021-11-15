@@ -1,32 +1,32 @@
-//Modulo Personaje 
+//Modulo Character 
 //elaborado por: Pedro Angel Gomez Dimas
 //fecha de creación: 11 de octubre de 2021 
 //fecha de ultima modificación: 12 de noviembre de 2021 
 //comentario:
-class Personaje{
-  int atk;  //puntos de ataque
-  int def;  //puntos de defensa
-  int hp;   //puntos de vida actuales
-  int hpm;  //puntos de vida máximo (nivel)
-  int hpp;  //puntos de vida máximo (puntos)
-  int wpn;  //arma
-  int shl;  //escudo
-  int dir;  //hacia donde mira
-  int exp;  //experiencia acumulada
-  int lvl;  //nivel del personaje
-  int px;   //posición x en el mapa
-  int py;   //posición y en el mapa
-  int cx;   //posición x en combate
-  int cy;   //posicion y en combate
-  int terr; //indica el terreno que pisa el personaje
-  int cash; //cuanto dinero tiene el personaje
-  CoolDownTimer cdtturn; //turno del jugador
-  //inventario
+class Character{
+  int atk;  
+  int def;  
+  int hp;   
+  int hpm;  
+  int hpp;  
+  int weapon;  
+  int shield;  
+  int dir;  
+  int exp; 
+  int lvl;  
+  int px;   
+  int py;   
+  
+  int cx;  
+  int cy;  
+  int terr; 
+  int cash; 
+  CoolDownTimer cdtturn;
   int potn;
   int fptn;
   int tonic;
   
-  Personaje(int a,int d,int h,int c,int x,int y){
+  Character(int a,int d,int h,int c,int x,int y){
     atk=a;
     def=d;
     hpm=h;
@@ -38,7 +38,7 @@ class Personaje{
     py=y;
     cx=600;
     cy=350;
-    terr=CLPST;
+    terr=GRASS;
     cash=c;
     potn=0;
     fptn=0;

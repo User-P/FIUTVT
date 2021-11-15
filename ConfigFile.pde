@@ -77,6 +77,7 @@ class ConfigFile{
     save=save+"#langstr="+ns+";";
     save=save+"#pointsnotassigned="+pointsnotassigned+";";
     save=save+"#minimumpoints="+minimumpoints+";";
+    save=save+"#maximunpoints="+maximunpoints+";";
     save=save+"#bsqodd="+bsqodd+";";
     save=save+"#pstodd="+pstodd+";";
     save=save+"#trrodd="+trrodd+";";

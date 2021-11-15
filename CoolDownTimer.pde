@@ -5,33 +5,31 @@
 //comentario:
 class CoolDownTimer{
   int count;
-  int cntlimit;
-  float actime;
+  int limitcount;
+  float currenttime;
   float cotime;
   boolean active;
   boolean off;
   
   CoolDownTimer(int cl){
     count=0;
-    cntlimit=cl;
-    actime=0f;
+    limitcount=cl;
+    currenttime=0f;
     cotime=0f;
     active=false;
     off=false;
   }
   
   void activate(){
-    off=false;
     active=true;
-    actime=millis();
+    currenttime=millis();
     cotime=0f;
     count=0;
   }
   
   void deactivate(){
-    off=false;
     active=false;
-    actime=0f;
+    currenttime=0f;
     count=0;
   }
   
@@ -44,13 +42,13 @@ class CoolDownTimer{
   }
   
   void setTime(int t){
-    cntlimit=t;
+    limitcount=t;
     deactivate();
   }
   
   void coolingDown(){
     if(active){
-      if(count<cntlimit)
+      if(count<limitcount)
         count++;
       else{
         active=false;
@@ -62,21 +60,21 @@ class CoolDownTimer{
   
   void coolingDownM(){
     if(active){
-      cotime=millis()-actime;
-      if(cotime>=cntlimit){
+      cotime=millis()-currenttime;
+      if(cotime>=limitcount){
         active=false;
-        actime=0f;
+        currenttime=0f;
         off=true;
       }  
     }
   }
   
   int countLeft(){
-    return cntlimit-count;
+    return limitcount-count;
   }
   
   float timeLeft(){
-    return (cntlimit-count)*1.0/60;
+    return (limitcount-count)*1.0/60;
   }
   
   void toggleCoolDown(){
@@ -90,7 +88,7 @@ class CoolDownTimer{
     rect(x,y,160,28);
     fill(color(0,220,0));
     stroke(color(0,220,0));
-    rect(x+2,y+2,int((count*1.0/cntlimit)*156),24);
+    rect(x+2,y+2,int((count*1.0/limitcount)*156),24);
     rectMode(CENTER);
   }
 }

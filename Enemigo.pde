@@ -12,7 +12,7 @@ class Enemigo{
   int lvl;  //nivel del enemigo
   int cx;   //posición x en combate
   int cy;   //posicion y en combate
-  int terr; //terreno que pisa
+  int terr; //terrain que pisa
   int cash; //cuanto dinero da al ser vencido
   CoolDownTimer cdtturn; //turno del enemigo
   

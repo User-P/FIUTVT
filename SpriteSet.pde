@@ -4,52 +4,52 @@
 //fecha de ultima modificación: 18 de octubre de 2021
 //comentario:
 class SpriteSet{
-  PImage sprt[];
-  String ruta;
-  String nomb;
-  String frmt;
+  PImage sprite[];
+  String route;
+  String name;
+  String format;
   int size;
-  int frc;
-  int frl;
+  int framecount;
+  int framelimit;
   int spr;
   boolean onan;
   
   SpriteSet(String r, String n,String f,int s,int fl,boolean oa, int sp){
-    ruta=r;
-    nomb=n;
-    frmt=f;
+    route=r;
+    name=n;
+    format=f;
     size=s;
-    frl=fl;
-    frc=0;
+    framelimit=fl;
+    framecount=0;
     spr=sp;
     onan=oa;
-    sprt=new PImage[size];
+    sprite=new PImage[size];
     for(int i=0;i<size;i++)
-      sprt[i]=loadImage(ruta+nomb+i+frmt);
+      sprite[i]=loadImage(route+name+i+format);
   }
   
   void controlAnimacion(){
-    if(frc==frl){
+    if(framecount==framelimit){
       if(spr<size-1)
         spr++;
       else
         spr=0;
-      frc=0;  
+      framecount=0;  
     }
     else
-      frc++;
+      framecount++;
   }
   
   void display(int x,int y,int w,int h){
-    image(sprt[spr],x,y,w,h);
+    image(sprite[spr],x,y,w,h);
     if(onan)
-      controlAnimacion(); //Monty Python
+      controlAnimacion();
   }
   
   void flipDisplay(int x,int y,int w,int h){
     pushMatrix();
     scale(-1,1);
-    image(sprt[spr],-x,y,w,h);
+    image(sprite[spr],-x,y,w,h);
     popMatrix();
     if(onan)
       controlAnimacion();

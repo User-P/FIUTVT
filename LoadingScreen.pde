@@ -7,13 +7,13 @@
 class LoadingScreen{
   boolean loading;
   CoolDownTimer cdt;
-  SpriteSet diamante;
+  SpriteSet diamond;
   String message;
   
   LoadingScreen(){
     loading=true;
     cdt=new CoolDownTimer(120);
-    diamante=new SpriteSet("sprite/diamante/","diamante",".png",6,10,true,0);
+    diamond=new SpriteSet("sprite/diamond/","diamond",".png",6,10,true,0);
     message=lf.showString(26);
   }
   
@@ -21,7 +21,7 @@ class LoadingScreen{
     background(200);
     fill(255);
     imageMode(CENTER);
-    diamante.display(400,350,50,50);
+    diamond.display(400,350,50,50);
     textAlign(CENTER,CENTER);
     text(lf.showString(6),400,400);
     text(message,400,500);

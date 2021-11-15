@@ -53,7 +53,7 @@ class MapScreen{
     for(int i=0;i<mx;i++)
       for(int j=0;j<my;j++)
         if(gmode)
-          image(terreno[map[j][i]],40+i*80,40+j*80);
+          image(terrain[map[j][i]],40+i*80,40+j*80);
         else{
           stroke(palette[map[j][i]]);
           fill(palette[map[j][i]]);

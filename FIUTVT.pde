@@ -54,7 +54,7 @@ final boolean TURNP=true;
 final boolean TURNE=false;
 
 color palette[];
-PImage terreno[];
+PImage terrain[];
 PImage imgbackgr;
 PImage imgatk;
 PImage imgdef;
@@ -131,12 +131,12 @@ void createPalette(){
 }
 
 void createTerrain(){
-  terreno=new PImage[5];
-  terreno[WATER]=loadImage("sprite/terreno/agua_ok.png");
-  terreno[GROUND]=loadImage("sprite/terreno/tierra_ok.png");
-  terreno[FOREST]=loadImage("sprite/terreno/bosque_ok.png");
-  terreno[GRASS]=loadImage("sprite/terreno/pasto_ok.png");
-  terreno[SHOP]=loadImage("sprite/terreno/tienda_ok.png");
+  terrain=new PImage[5];
+  terrain[WATER]=loadImage("sprite/terrain/agua_ok.png");
+  terrain[GROUND]=loadImage("sprite/terrain/tierra_ok.png");
+  terrain[FOREST]=loadImage("sprite/terrain/bosque_ok.png");
+  terrain[GRASS]=loadImage("sprite/terrain/pasto_ok.png");
+  terrain[SHOP]=loadImage("sprite/terrain/tienda_ok.png");
 }
 
 void loadAudio(){

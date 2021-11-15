@@ -1,18 +1,18 @@
-//Modulo PantCreacion
+//Modulo CreationScreen
 //elaborado por: Pedro Angel Gomez Dimas
 //fecha de creación: 17 de septiembre de 2021
 //fecha de ultima modificación: 6 de noviembre de 2021
 //comentario:
 
-class PantCreacion{
-  Boton btnatkp;
-  Boton btndefp;
-  Boton btnhpmp;
-  Boton btnatkm;
-  Boton btndefm;
-  Boton btnhpmm;
-  Boton btnexit;
-  Boton btnplay;
+class CreationScreen{
+  Button btnatkp;
+  Button btndefp;
+  Button btnhpmp;
+  Button btnatkm;
+  Button btndefm;
+  Button btnhpmm;
+  Button btnexit;
+  Button btnplay;
   PImage imgcreat;
   int ppa;
   int minatr;
@@ -22,15 +22,15 @@ class PantCreacion{
   int def;
   int hpm;
     
-  PantCreacion(ConfigFile cf){
-    btnatkp=new Boton(630,250,50,50,17);
-    btnatkm=new Boton(200,250,50,50,18);
-    btndefp=new Boton(630,310,50,50,17);
-    btndefm=new Boton(200,310,50,50,18);
-    btnhpmp=new Boton(630,370,50,50,17);
-    btnhpmm=new Boton(200,370,50,50,18);
-    btnexit=new Boton(200,600,200,100,5);
-    btnplay=new Boton(600,600,200,100,2);
+  CreationScreen(ConfigFile cf){
+    btnatkp=new Button(630,250,50,50,17);
+    btnatkm=new Button(200,250,50,50,18);
+    btndefp=new Button(630,310,50,50,17);
+    btndefm=new Button(200,310,50,50,18);
+    btnhpmp=new Button(630,370,50,50,17);
+    btnhpmm=new Button(200,370,50,50,18);
+    btnexit=new Button(200,600,200,100,5);
+    btnplay=new Button(600,600,200,100,2);
     btnatkp.activate();
     btnatkm.activate();
     btndefp.activate();
@@ -93,13 +93,13 @@ class PantCreacion{
     if(btnexit.isClicked(x,y) && b==LEFT){
       rst=true;
       gc.musicManager(MSCOFF);
-      gc.setPantAct(PNINT);
+      gc.setPantAct(START);
     }
     if(btnplay.isClicked(x,y) && b==LEFT){
       pers=new Personaje(atk,def,hpm,cf.cash,4,5);
       rst=true;
       gc.musicManager(MSCOFF);
-      gc.setPantAct(PNMAP);
+      gc.setPantAct(MAP);
     }
   } 
     

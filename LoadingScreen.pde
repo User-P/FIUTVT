@@ -1,16 +1,16 @@
-//Modulo PantCarga
+//Modulo LoadingScreen
 //elaborado por: Pedro Angel Gomez Dimas
 //fecha de creación: 17 de septiembre de 2021
 //fecha de ultima modificación: 12 de noviembre de 2021
 //comentario:
 
-class PantCarga{
+class LoadingScreen{
   boolean loading;
   CoolDownTimer cdt;
   SpriteSet diamante;
   String message;
   
-  PantCarga(){
+  LoadingScreen(){
     loading=true;
     cdt=new CoolDownTimer(120);
     diamante=new SpriteSet("sprite/diamante/","diamante",".png",6,10,true,0);
@@ -30,6 +30,6 @@ class PantCarga{
     if(cdt.isActive())
       cdt.coolingDown();
     if(cdt.isOff())
-      gc.setPantAct(PNINT);
+      gc.setPantAct(START);
   }
 }

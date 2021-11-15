@@ -1,10 +1,10 @@
-//Modulo Boton
+//Modulo Button
 //elaborado por: Pedro Angel Gomez Dimas
 //fecha de creación: 24 de septiembre de 2021
 //fecha de ultima modificación: 12 de noviembre de 2021
 //comentario:
 
-class Boton{
+class Button{
   int cx;          //coordenada x
   int cy;          //coordenada y
   int an;          //ancho del botón
@@ -13,7 +13,7 @@ class Boton{
   boolean active;  //true=visible false=invisible
   boolean marked;
   
-  Boton(int x,int y, int b, int a,int s){
+  Button(int x,int y, int b, int a,int s){
     cx=x;
     cy=y;
     an=b;

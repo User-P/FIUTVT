@@ -1,14 +1,14 @@
-//Modulo PantTienda
+//Modulo StoreScreen
 //elaborado por: Pedro Angel Gomez Dimas
 //fecha de creación: 17 de septiembre de 2021 
 //fecha de ultima modificación: 8 de noviembre de 2021 
 //comentario:
 
-class PantTienda{
+class StoreScreen{
   
-  Boton btncomp;
-  Boton btnvend;
-  Boton btncont;
+  Button btncomp;
+  Button btnvend;
+  Button btncont;
   ClickItem citpotn;
   ClickItem citfptn;
   ClickItem cittonic;
@@ -16,10 +16,10 @@ class PantTienda{
   PImage imgtrademode;
   boolean trademode;   //TMBUY=el jugador VENDE, TMSELL=el jugador COMPRA
   
-  PantTienda(){
-    btncomp=new Boton(200,600,200,100,24);
-    btnvend=new Boton(600,600,200,100,25);
-    btncont=new Boton(400,720,200,100,5);
+  StoreScreen(){
+    btncomp=new Button(200,600,200,100,24);
+    btnvend=new Button(600,600,200,100,25);
+    btncont=new Button(400,720,200,100,5);
     btncomp.activate();
     btnvend.activate();
     btncont.activate();
@@ -77,7 +77,7 @@ class PantTienda{
     }  
     if(btncont.isClicked(x,y) && b==LEFT){
       gc.musicManager(MSCOFF);
-      gc.setPantAct(PNMAP);
+      gc.setPantAct(MAP);
     } 
     if(citpotn.isClicked(x,y) && b==LEFT){
       trade(ITPTN);

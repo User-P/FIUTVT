@@ -1,9 +1,9 @@
-//Modulo PantMapa 
+//Modulo MapScreen 
 //elaborado por: Pedro Angel Gomez Dimas
 //fecha de creación: 11 de octubre de 2021 
 //fecha de ultima modificación: 6 de noviembre de 2021 
 //comentario:
-class PantMapa{
+class MapScreen{
   int mapa[][]={{0,0,0,0,0,0,0,0,0,0},
                 {0,1,1,1,1,1,1,1,1,0},
                 {0,1,2,2,2,3,3,3,1,0},
@@ -22,7 +22,7 @@ class PantMapa{
   int clouds[][];
   boolean blur;
   
-  PantMapa(){
+  MapScreen(){
     imgsky=loadImage("sprite/sky.jpg");
     imgcloud=loadImage("sprite/cloud.png");
     imgblur=loadImage("sprite/backgr/blur.jpg");
@@ -133,11 +133,11 @@ class PantMapa{
                 tint(255,128);
                 image(imgblur,400,400);
                 noTint();
-                gc.setPantAct(PNPAU);
+                gc.setPantAct(PAUSE);
                 break;
       case ' ': if(mapa[pers.py][pers.px]==CLTND){
                   gc.musicManager(MSCOFF);
-                  gc.setPantAct(PNTND);
+                  gc.setPantAct(STORE);
                 }  
     }
   }
@@ -163,7 +163,7 @@ class PantMapa{
     if(generaCombate()){
       sfxfight.play();
       gc.musicManager(MSCOFF);
-      gc.setPantAct(PNCBT);
+      gc.setPantAct(COMBAT);
     }  
   }
   

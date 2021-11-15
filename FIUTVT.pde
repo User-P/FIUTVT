@@ -7,17 +7,17 @@
 import processing.sound.*;
 import ddf.minim.*;
 
-final int PNCRG=1;    //Pantalla de Carga
-final int PNCBT=2;    //Pantalla de Combate
-final int PNCFG=3;    //Pantalla de Configuración
-final int PNCRE=4;    //Pantalla de Creación
-final int PNCRD=5;    //Pantalla de Créditos
-final int PNFIN=6;    //Pantalla de Fin de Juego
-final int PNINT=7;    //Pantalla de Intro
-final int PNLVL=8;    //Pantalla de Subir Nivel
-final int PNMAP=9;    //Pantalla de Mapa
-final int PNPAU=10;   //Pantalla de Pausa
-final int PNTND=11;   //Pantalla de Tienda
+final int LOADING=1;    //Pantalla de Carga
+final int COMBAT=2;    //Pantalla de Combate
+final int CONFIG=3;    //Pantalla de Configuración
+final int CREATION=4;    //Pantalla de Creación
+final int CREDITS=5;    //Pantalla de Créditos
+final int END=6;    //Pantalla de Fin de Juego
+final int START=7;    //Pantalla de Intro
+final int LVLUP=8;    //Pantalla de Subir Nivel
+final int MAP=9;    //Pantalla de Mapa
+final int PAUSE=10;   //Pantalla de Pausa
+final int STORE=11;   //Pantalla de Tienda
 final int LGSPA=0;
 final int LGENG=1;
 final int ATATK=1;
@@ -131,14 +131,14 @@ void createTerreno(){
 }
 
 void loadAudio(){
-  gc.pncrg.message=lf.showString(27);
+  gc.loading.message=lf.showString(27);
   sfxfight=new SoundFile(this,"sound/fx/enter battle.mp3");
   sfxclick=new SoundFile(this,"sound/fx/click.mp3");
   sfxcash=new SoundFile(this,"sound/fx/cash.mp3");
   sfxfight.amp(0.45);
   sfxcash.amp(0.45);
   sfxclick.amp(0.25);
-  gc.pncrg.message=lf.showString(28);
+  gc.loading.message=lf.showString(28);
   mscintro=minim.loadFile("sound/music/intro.mp3");
   msccreds=minim.loadFile("sound/music/credits.mp3");
   mscstore=minim.loadFile("sound/music/store.mp3");
@@ -154,8 +154,8 @@ void loadAudio(){
   mscvctry.shiftGain(mscvctry.getGain(),0,1);
   msccombt.shiftGain(msccombt.getGain(),0,1);
   mscmundo.shiftGain(mscmundo.getGain(),0,1);*/
-  gc.pncrg.message=lf.showString(29);
-  gc.pncrg.loading=false;
+  gc.loading.message=lf.showString(29);
+  gc.loading.loading=false;
 }
 
 void music(){

@@ -1,17 +1,17 @@
-//Modulo PantCombate
+//Modulo CombatScreen
 //elaborado por: Pedro Angel Gomez Dimas
 //fecha de creación: 17 de septiembre de 2021
 //fecha de ultima modificación: 12 de noviembre de 2021
 //comentario:
 
-class PantCombate{
+class CombatScreen{
   PImage pasto;
   PImage desrt;
   PImage woods;
-  Boton btnback;
-  Boton btnatk;
-  Boton btndef;
-  Boton btnitem;
+  Button btnback;
+  Button btnatk;
+  Button btndef;
+  Button btnitem;
   boolean battleactive;
   boolean actionactive;
   Enemigo enemy;
@@ -19,14 +19,14 @@ class PantCombate{
   boolean turn;
   int action;
   
-  PantCombate(){
+  CombatScreen(){
     pasto=loadImage("sprite/backgr/pasto_ok.png");
     desrt=loadImage("sprite/backgr/desierto_ok.png");
     woods=loadImage("sprite/backgr/bosque_ok.png");
-    btnback=new Boton(400,700,200,100,23);
-    btnatk=new Boton(150,550,150,80,30);
-    btndef=new Boton(400,550,150,80,31);
-    btnitem=new Boton(650,550,150,80,32);
+    btnback=new Button(400,700,200,100,23);
+    btnatk=new Button(150,550,150,80,30);
+    btndef=new Button(400,550,150,80,31);
+    btnitem=new Button(650,550,150,80,32);
     btnback.activate();
     battleactive=BATTLEOFF;
     actionactive=ACTOFF;
@@ -99,7 +99,7 @@ class PantCombate{
     if(btnback.isClicked(x,y) && b==LEFT){
       gc.musicManager(MSCOFF);
       battleactive=BATTLEOFF;
-      gc.setPantAct(PNMAP);
+      gc.setPantAct(MAP);
     }
     if(!actionactive && btnatk.isClicked(x,y) && b==LEFT){
       println("ataque");

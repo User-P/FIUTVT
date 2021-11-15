@@ -1,16 +1,16 @@
-//Modulo PantPausa
+//Modulo PauseScreen
 //elaborado por: Pedro Angel Gomez Dimas
 //fecha de creación: 17 de septiembre de 2021
 //fecha de ultima modificación: 1 de noviembre de 2021
 //comentario:
 
-class PantPausa{
-  Boton btnexit;
-  Boton btncont;
+class PauseScreen{
+  Button btnexit;
+  Button btncont;
   
-  PantPausa(){
-    btnexit=new Boton(200,600,200,100,23);
-    btncont=new Boton(600,600,200,100,5);
+  PauseScreen(){
+    btnexit=new Button(200,600,200,100,23);
+    btncont=new Button(600,600,200,100,5);
     btnexit.activate();
     btncont.activate();
   }
@@ -25,11 +25,11 @@ class PantPausa{
   void mouseProcess(int x,int y,int b){
     if(btnexit.isClicked(x,y) && b==LEFT){
       gc.musicManager(MSCOFF);
-      gc.setPantAct(PNINT);
+      gc.setPantAct(START);
     }  
     if(btncont.isClicked(x,y) && b==LEFT){
-      gc.pnmap.toggleBlur();
-      gc.setPantAct(PNMAP); 
+      gc.map.toggleBlur();
+      gc.setPantAct(MAP); 
     }  
   }
 }

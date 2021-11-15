@@ -1,18 +1,18 @@
-//Modulo PantConfig
+//Modulo ConfigScreen
 //elaborado por: Pedro Angel Gomez Dimas
 //fecha de creación: 17 de septiembre de 2021
 //fecha de ultima modificación: 29 de octubre de 2021
 //comentario:
 
-class PantConfig{
-  Boton btnidio;
-  Boton btnacep;
-  Boton btnback;
+class ConfigScreen{
+  Button btnidio;
+  Button btnacep;
+  Button btnback;
   
-  PantConfig(){
-    btnidio=new Boton(550,250,200,100,3);
-    btnacep=new Boton(250,500,200,100,4);
-    btnback=new Boton(550,500,200,100,5);
+  ConfigScreen(){
+    btnidio=new Button(550,250,200,100,3);
+    btnacep=new Button(250,500,200,100,4);
+    btnback=new Button(550,500,200,100,5);
     btnidio.activate();
     btnacep.activate();
     btnback.activate();
@@ -33,6 +33,6 @@ class PantConfig{
     if(btnacep.isClicked(x,y) && b==LEFT)  
       cf.saveConfig(lf);
     if(btnback.isClicked(x,y) && b==LEFT)  
-      gc.setPantAct(PNINT);
+      gc.setPantAct(START);
   }
 }

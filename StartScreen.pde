@@ -1,20 +1,20 @@
-//Modulo PantIntro
+//Modulo StartScreen
 //elaborado por: Pedro Angel Gomez Dimas
 //fecha de creación: 17 de septiembre de 2021 
 //fecha de ultima modificación: 5 de noviembre de 2021 
 //comentario:
 
-class PantIntro{
-  Boton btncred;
-  Boton btnconf;
-  Boton btnplay;
-  Boton btnexit;
+class StartScreen{
+  Button btncred;
+  Button btnconf;
+  Button btnplay;
+  Button btnexit;
   
-  PantIntro(){
-    btncred=new Boton(400,250,200,100,0);
-    btnconf=new Boton(400,400,200,100,1);
-    btnplay=new Boton(400,550,200,100,2);
-    btnexit=new Boton(400,700,200,100,23);
+  StartScreen(){
+    btncred=new Button(400,250,200,100,0);
+    btnconf=new Button(400,400,200,100,1);
+    btnplay=new Button(400,550,200,100,2);
+    btnexit=new Button(400,700,200,100,23);
     btncred.activate();
     btnconf.activate();
     btnplay.activate();
@@ -35,13 +35,13 @@ class PantIntro{
   void mouseProcess(int x,int y,int b){
     if(btncred.isClicked(x,y) && b==LEFT){
       gc.musicManager(MSCOFF);
-      gc.setPantAct(PNCRD);
+      gc.setPantAct(CREDITS);
     }  
     if(btnconf.isClicked(x,y) && b==LEFT)
-      gc.setPantAct(PNCFG);  
+      gc.setPantAct(CONFIG);  
     if(btnplay.isClicked(x,y) && b==LEFT){
       gc.musicManager(MSCOFF);
-      gc.setPantAct(PNCRE);
+      gc.setPantAct(CREATION);
     }  
     if(btnexit.isClicked(x,y) && b==LEFT)
       exit();  

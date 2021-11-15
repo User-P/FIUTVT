@@ -5,78 +5,78 @@
 //comentario:
 
 class GameControl{
-  PantCarga pncrg;
-  PantCombate pncbt;
-  PantConfig pncfg;
-  PantCreacion pncre;
-  PantCreditos pncrd;
-  PantFinJgo pnfin;
-  PantIntro pnint;
-  PantLvlUp pnlvl;
-  PantMapa pnmap;
-  PantPausa pnpau;
-  PantTienda pntnd;
-  int pantact;
+  LoadingScreen loading;
+  CombatScreen combat;
+  ConfigScreen config;
+  CreationScreen creation;
+  CreditsScreen credits;
+  EndGameScreen end;
+  StartScreen start;
+  LvlUpScreen lvlup;
+  MapScreen map;
+  PauseScreen pause;
+  StoreScreen store;
+  int activeScreen;
   boolean musicon;
   
   GameControl(){
-    pncrg=new PantCarga();
-    pncbt=new PantCombate();
-    pncfg=new PantConfig();
-    pncre=new PantCreacion(cf);
-    pncrd=new PantCreditos();
-    pnfin=new PantFinJgo();
-    pnint=new PantIntro();
-    pnlvl=new PantLvlUp();
-    pnmap=new PantMapa();
-    pnpau=new PantPausa();
-    pntnd=new PantTienda();
-    pantact=PNCRG;
+    loading=new LoadingScreen();
+    combat=new CombatScreen();
+    config=new ConfigScreen();
+    creation=new CreationScreen(cf);
+    credits=new CreditsScreen();
+    end=new EndGameScreen();
+    start=new StartScreen();
+    lvlup=new LvlUpScreen();
+    map=new MapScreen();
+    pause=new PauseScreen();
+    store=new StoreScreen();
+    activeScreen=LOADING;
     musicon=false;
   }
   
   void display(){
-    switch(pantact){
-      case PNCRG: pncrg.display();
+    switch(activeScreen){
+      case LOADING: loading.display();
                   break;
-      case PNCBT: pncbt.display();
+      case COMBAT: combat.display();
                   break;
-      case PNCFG: pncfg.display();
+      case CONFIG: config.display();
                   break;
-      case PNCRE: pncre.display();
+      case CREATION: creation.display();
                   break;
-      case PNCRD: pncrd.display();
+      case CREDITS: credits.display();
                   break;
-      case PNFIN: pnfin.display();
+      case END: end.display();
                   break;
-      case PNINT: pnint.display();
+      case START: start.display();
                   break; 
-      case PNLVL: pnlvl.display();
+      case LVLUP: lvlup.display();
                   break; 
-      case PNMAP: pnmap.display();
+      case MAP: map.display();
                   break;
-      case PNPAU: pnpau.display();
+      case PAUSE: pause.display();
                   break;
-      case PNTND: pntnd.display();
+      case STORE: store.display();
                   break;            
     }
   }
   
   void mouseProcess(int x,int y,int b){
-    switch(pantact){
-      case PNCBT: pncbt.mouseProcess(x,y,b);
+    switch(activeScreen){
+      case COMBAT: combat.mouseProcess(x,y,b);
                   break;
-      case PNCFG: pncfg.mouseProcess(x,y,b);
+      case CONFIG: config.mouseProcess(x,y,b);
                   break;            
-      case PNCRD: pncrd.mouseProcess(x,y,b);
+      case CREDITS: credits.mouseProcess(x,y,b);
                   break;
-      case PNCRE: pncre.mouseProcess(x,y,b);
+      case CREATION: creation.mouseProcess(x,y,b);
                   break;
-      case PNINT: pnint.mouseProcess(x,y,b);
+      case START: start.mouseProcess(x,y,b);
                   break;
-      case PNPAU: pnpau.mouseProcess(x,y,b);
+      case PAUSE: pause.mouseProcess(x,y,b);
                   break;            
-      case PNTND: pntnd.mouseProcess(x,y,b);
+      case STORE: store.mouseProcess(x,y,b);
                   break;            
       default:    if(b==LEFT)
                     sigPant();//avanzo una pantalla
@@ -86,8 +86,8 @@ class GameControl{
   }
   
   void keyProcess(char k){
-    switch(pantact){
-      case PNMAP: pnmap.keyProcess(k);
+    switch(activeScreen){
+      case MAP: map.keyProcess(k);
                   break;
       default:    if(key=='+')
                     gc.sigPant();
@@ -97,33 +97,33 @@ class GameControl{
   }
   
   void sigPant(){
-    pantact++;
-    if(pantact==12)
-      pantact=1;
+    activeScreen++;
+    if(activeScreen==12)
+      activeScreen=1;
   }
   
   void antPant(){
-    pantact--;
-    if(pantact==0)
-      pantact=11;
+    activeScreen--;
+    if(activeScreen==0)
+      activeScreen=11;
   }
   
   void setPantAct(int p){
-    pantact=p;
+    activeScreen=p;
   }
   
   void musicManager(boolean s){
     musicon=s;
-    playTrack((musicon?pantact:0));
+    playTrack((musicon?activeScreen:0));
   }
   
   void playTrack(int t){
-    if(t==PNCBT) msccombt.play(); else {msccombt.pause();msccombt.rewind();}
-    if(t==PNCRD) msccreds.play(); else {msccreds.pause();msccreds.rewind();}
-    if(t==PNCRE) msccreat.play(); else {msccreat.pause();msccreat.rewind();}
-    if(t==PNINT) mscintro.play(); else {mscintro.pause();mscintro.rewind();}
-    if(t==PNMAP) mscmundo.play(); else {mscmundo.pause();mscmundo.rewind();}
-    if(t==PNTND) mscstore.play(); else {mscstore.pause();mscstore.rewind();}
+    if(t==COMBAT) msccombt.play(); else {msccombt.pause();msccombt.rewind();}
+    if(t==CREDITS) msccreds.play(); else {msccreds.pause();msccreds.rewind();}
+    if(t==CREATION) msccreat.play(); else {msccreat.pause();msccreat.rewind();}
+    if(t==START) mscintro.play(); else {mscintro.pause();mscintro.rewind();}
+    if(t==MAP) mscmundo.play(); else {mscmundo.pause();mscmundo.rewind();}
+    if(t==STORE) mscstore.play(); else {mscstore.pause();mscstore.rewind();}
   }
   
   boolean getMusicStatus(){

@@ -25,11 +25,11 @@ class PauseScreen{
   void mouseProcess(int x,int y,int b){
     if(btnexit.isClicked(x,y) && b==LEFT){
       gc.musicManager(MSCOFF);
-      gc.setPantAct(START);
+      gc.setActiveScreen(START);
     }  
     if(btncont.isClicked(x,y) && b==LEFT){
       gc.map.toggleBlur();
-      gc.setPantAct(MAP); 
+      gc.setActiveScreen(MAP); 
     }  
   }
 }

@@ -77,7 +77,7 @@ class StoreScreen{
     }  
     if(btncont.isClicked(x,y) && b==LEFT){
       gc.musicManager(MSCOFF);
-      gc.setPantAct(MAP);
+      gc.setActiveScreen(MAP);
     } 
     if(citpotn.isClicked(x,y) && b==LEFT){
       trade(ITPTN);

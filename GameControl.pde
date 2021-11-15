@@ -79,9 +79,9 @@ class GameControl{
       case STORE: store.mouseProcess(x,y,b);
                   break;            
       default:    if(b==LEFT)
-                    sigPant();//avanzo una pantalla
+                    nextScreen();//avanzo una pantalla
                   if(b==RIGHT)
-                    antPant();//retrocedo una pantalla
+                    prevScreen();//retrocedo una pantalla
     }  
   }
   
@@ -90,25 +90,25 @@ class GameControl{
       case MAP: map.keyProcess(k);
                   break;
       default:    if(key=='+')
-                    gc.sigPant();
+                    gc.nextScreen();
                   if(key=='-')
-                    gc.antPant();
+                    gc.prevScreen();
     }
   }
   
-  void sigPant(){
+  void nextScreen(){
     activeScreen++;
     if(activeScreen==12)
       activeScreen=1;
   }
   
-  void antPant(){
+  void prevScreen(){
     activeScreen--;
     if(activeScreen==0)
       activeScreen=11;
   }
   
-  void setPantAct(int p){
+  void setActiveScreen(int p){
     activeScreen=p;
   }
   

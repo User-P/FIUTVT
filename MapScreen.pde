@@ -133,11 +133,11 @@ class MapScreen{
                 tint(255,128);
                 image(imgblur,400,400);
                 noTint();
-                gc.setPantAct(PAUSE);
+                gc.setActiveScreen(PAUSE);
                 break;
       case ' ': if(mapa[pers.py][pers.px]==CLTND){
                   gc.musicManager(MSCOFF);
-                  gc.setPantAct(STORE);
+                  gc.setActiveScreen(STORE);
                 }  
     }
   }
@@ -163,7 +163,7 @@ class MapScreen{
     if(generaCombate()){
       sfxfight.play();
       gc.musicManager(MSCOFF);
-      gc.setPantAct(COMBAT);
+      gc.setActiveScreen(COMBAT);
     }  
   }
   

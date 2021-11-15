@@ -5,21 +5,21 @@
 //comentario:
 
 class Button{
-  int cx;          //coordenada x
-  int cy;          //coordenada y
-  int an;          //ancho del botón
-  int al;          //alto del botón
-  int t;        //texto que contendrá
-  boolean active;  //true=visible false=invisible
+  int cx;          
+  int cy;          
+  int width;        
+  int high;         
+  int text;       
+  boolean active;  
   boolean marked;
   
   Button(int x,int y, int b, int a,int s){
     cx=x;
     cy=y;
-    an=b;
-    al=a;
-    t=s;
-    active=false;
+    width=b;
+    high=a;
+    text=s;
+    active=true;
     marked=false;
   }
   
@@ -28,15 +28,15 @@ class Button{
       rectMode(CENTER);
       fill(color(225,48,35));
       stroke(color(234,239,34));
-      rect(cx,cy,an,al);
+      rect(cx,cy,width,high);
       fill(255);
       textAlign(CENTER,CENTER);
-      text(lf.showString(t),cx,cy);
+      text(lf.showString(text),cx,cy);
       if(marked){
         noFill();
         stroke(color(0,250,0));
         strokeWeight(10);
-        rect(cx,cy,an,al);
+        rect(cx,cy,width,high);
         strokeWeight(1);
       }
     }    
@@ -46,12 +46,12 @@ class Button{
     active=true;
   }
   
-  void deactive(){
+  void deactivate(){
     active=false;
   }
   
   boolean isClicked(int x,int y){
-    return (active && (((x>=(cx-(an/2)))&&(x<=(cx+(an/2))) && ((y>=(cy-(al/2)))&&(y<=(cy+(al/2)))))));
+    return (active && (((x>=(cx-(width/2)))&&(x<=(cx+(width/2))) && ((y>=(cy-(high/2)))&&(y<=(cy+(high/2)))))));
   }
   
   void toggleMark(){

@@ -93,13 +93,13 @@ class CreationScreen{
     if(btnexit.isClicked(x,y) && b==LEFT){
       rst=true;
       gc.musicManager(MSCOFF);
-      gc.setPantAct(START);
+      gc.setActiveScreen(START);
     }
     if(btnplay.isClicked(x,y) && b==LEFT){
       pers=new Personaje(atk,def,hpm,cf.cash,4,5);
       rst=true;
       gc.musicManager(MSCOFF);
-      gc.setPantAct(MAP);
+      gc.setActiveScreen(MAP);
     }
   } 
     
@@ -118,7 +118,7 @@ class CreationScreen{
       ppa++;
     }
     if(ppa>0)
-      btnplay.deactive();
+      btnplay.deactivate();
   }
   
   int getAttr(int a){
@@ -137,7 +137,7 @@ class CreationScreen{
   }
   
   void resetAttr(){
-    btnplay.deactive();
+    btnplay.deactivate();
     ppa=cf.ppa;
     atk=def=hpm=minatr;
   }

@@ -99,7 +99,7 @@ class CombatScreen{
     if(btnback.isClicked(x,y) && b==LEFT){
       gc.musicManager(MSCOFF);
       battleactive=BATTLEOFF;
-      gc.setPantAct(MAP);
+      gc.setActiveScreen(MAP);
     }
     if(!actionactive && btnatk.isClicked(x,y) && b==LEFT){
       println("ataque");
@@ -156,9 +156,9 @@ class CombatScreen{
   
   void endAction(){
     println("fin de acción");
-    btnatk.deactive();
-    btndef.deactive();
-    btnitem.deactive();
+    btnatk.deactivate();
+    btndef.deactivate();
+    btnitem.deactivate();
     toggleMarks();
     pers.cdtturn.activate();
     toggleAction();

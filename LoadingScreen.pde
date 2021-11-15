@@ -30,6 +30,6 @@ class LoadingScreen{
     if(cdt.isActive())
       cdt.coolingDown();
     if(cdt.isOff())
-      gc.setPantAct(START);
+      gc.setActiveScreen(START);
   }
 }

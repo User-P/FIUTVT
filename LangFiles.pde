@@ -7,17 +7,15 @@
 class LangFiles{
   String langs[][];
   String file[];
-  int actlang;
+  int activelang;
   int ns;
 
   LangFiles(int l,int n){
-    actlang=l;
+    activelang=l;
     ns=n;
     langs=new String [ns][2];
 
-    //cargaspa
     loadLang(0);
-    //cargaing
     loadLang(1);
   }
   
@@ -33,18 +31,18 @@ class LangFiles{
   }
   
   void setLang(int l){
-    actlang=l;
+    activelang=l;
   }
   
   int getLang(){
-    return actlang;
+    return activelang;
   }
   
   String showString(int i){
-    return langs[i][actlang];
+    return langs[i][activelang];
   }
   
   void toggleLang(){
-    actlang=(actlang==LGSPA)?LGENG:LGSPA;
+    activelang=(activelang==LGSPA)?LGENG:LGSPA;
   }
 }

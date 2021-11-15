@@ -23,7 +23,7 @@ class CreditsScreen{
   void mouseProcess(int x,int y,int b){
     if(btnback.isClicked(x,y) && b==LEFT){
       gc.musicManager(MSCOFF);
-      gc.setPantAct(START);
+      gc.setActiveScreen(START);
     }     
   }
 }

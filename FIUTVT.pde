@@ -6,20 +6,23 @@
 
 import processing.sound.*;
 import ddf.minim.*;
+//Screens
+final int LOADING=1;   
+final int COMBAT=2;   
+final int CONFIG=3;   
+final int CREATION=4;  
+final int CREDITS=5;  
+final int END=6;   
+final int START=7; 
+final int LVLUP=8; 
+final int MAP=9;   
+final int PAUSE=10; 
+final int STORE=11;
 
-final int LOADING=1;    //Pantalla de Carga
-final int COMBAT=2;    //Pantalla de Combate
-final int CONFIG=3;    //Pantalla de Configuración
-final int CREATION=4;    //Pantalla de Creación
-final int CREDITS=5;    //Pantalla de Créditos
-final int END=6;    //Pantalla de Fin de Juego
-final int START=7;    //Pantalla de Intro
-final int LVLUP=8;    //Pantalla de Subir Nivel
-final int MAP=9;    //Pantalla de Mapa
-final int PAUSE=10;   //Pantalla de Pausa
-final int STORE=11;   //Pantalla de Tienda
+//languages
 final int LGSPA=0;
 final int LGENG=1;
+
 final int ATATK=1;
 final int ATDEF=2;
 final int ATHPM=3;
@@ -46,6 +49,7 @@ final int ACDEF=1;
 final int ACITM=2;
 final boolean TURNP=true;
 final boolean TURNE=false;
+
 color paleta[];
 PImage terreno[];
 PImage imgbackgr;
@@ -83,7 +87,10 @@ void setup(){
   createPal();
   createTerreno();
   gmode=true;
+  
   fbase=createFont("MesloLGS NF",24);
+  textFont(fbase);
+
   imgatk=loadImage("sprite/icon/icon_atk.png");
   imgdef=loadImage("sprite/icon/icon_def.png");
   imghpm=loadImage("sprite/icon/icon_hpm.png");
@@ -92,7 +99,6 @@ void setup(){
   imgtonic=loadImage("sprite/items/tonic.png");
   imgcash=loadImage("sprite/items/cash.png");
   imgbackgr=loadImage("sprite/backgr/backgr.png");
-  textFont(fbase);
   cf=new ConfigFile();
   lf=new LangFiles(cf.lang,cf.ns);
   gc=new GameControl();

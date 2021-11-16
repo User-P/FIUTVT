@@ -6,20 +6,18 @@
 
 class PauseScreen{
   Button exit;
-  Button btncont;
+  Button back;
   
   PauseScreen(){
     exit=new Button(200,600,200,100,23);
-    btncont=new Button(600,600,200,100,5);
-    exit.activate();
-    btncont.activate();
+    back=new Button(600,600,200,100,5);
   }
   
   void display(){
     fill(255);
     text(lf.showString(15),400,100);
     exit.display();
-    btncont.display();
+    back.display();
   }
   
   void mouseProcess(int x,int y,int b){
@@ -27,8 +25,7 @@ class PauseScreen{
       gc.musicManager(MSCOFF);
       gc.setActiveScreen(START);
     }  
-    if(btncont.isClicked(x,y) && b==LEFT){
-      gc.map.toggleBlur();
+    if(back.isClicked(x,y) && b==LEFT){
       gc.setActiveScreen(MAP); 
     }  
   }

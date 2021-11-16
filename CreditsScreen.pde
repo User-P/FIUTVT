@@ -5,11 +5,11 @@
 //comentario:
 
 class CreditsScreen{  
-  Button btnback;
+  Button back;
   
   CreditsScreen(){
-    btnback=new Button(400,600,200,100,5);
-    btnback.activate();
+    back=new Button(400,600,200,100,5);
+    back.activate();
   }
   
   void display(){
@@ -17,11 +17,11 @@ class CreditsScreen{
     background(0);
     fill(255);
     text(lf.showString(10),400,400);
-    btnback.display();
+    back.display();
   }
   
   void mouseProcess(int x,int y,int b){
-    if(btnback.isClicked(x,y) && b==LEFT){
+    if(back.isClicked(x,y) && b==LEFT){
       gc.musicManager(MSCOFF);
       gc.setActiveScreen(START);
     }     

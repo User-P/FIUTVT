@@ -33,7 +33,6 @@ class CreationScreen{
     exit=new Button(200,600,200,100,5);
     play=new Button(600,600,200,100,2);
     play.deactivate();
-
     imgcreat=loadImage("sprite/backgr/creation.jpg");
     pointsnotassigned=cf.pointsnotassigned;
     atk=def=hp=minimumpoints=cf.minimumpoints;
@@ -47,7 +46,6 @@ class CreationScreen{
       resetAttr();
     background(imgcreat);
     fill(255);
-
     increaseatk.display();
     decreaseatk.display();
     increasedef.display();

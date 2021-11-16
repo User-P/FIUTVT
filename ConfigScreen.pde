@@ -7,12 +7,12 @@
 class ConfigScreen{
   Button btnlang;
   Button btnsuccess;
-  Button btnback;
+  Button back;
   
   ConfigScreen(){
     btnlang=new Button(550,250,200,100,3);
     btnsuccess=new Button(250,500,200,100,4);
-    btnback=new Button(550,500,200,100,5);
+    back=new Button(550,500,200,100,5);
   }
   
   void display(){
@@ -21,7 +21,7 @@ class ConfigScreen{
     text(lf.showString(8),400,100);
     btnlang.display();
     btnsuccess.display();
-    btnback.display();
+    back.display();
   }
   
   void mouseProcess(int x, int y, int b){
@@ -29,7 +29,7 @@ class ConfigScreen{
       lf.toggleLang();
     if(btnsuccess.isClicked(x,y) && b==LEFT)  
       cf.saveConfig(lf);
-    if(btnback.isClicked(x,y) && b==LEFT)  
+    if(back.isClicked(x,y) && b==LEFT)  
       gc.setActiveScreen(START);
   }
 }

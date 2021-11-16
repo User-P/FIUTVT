@@ -113,27 +113,23 @@ class MapScreen{
       case 'G': gmode=!gmode;
                 break;
       case 'w':
-      case 'W': if(revisaRestringido(player,UP))
+      case 'W': if(checkTerrain(player,UP))
                   move(UP);
                 break;
       case 'a':
-      case 'A': if(revisaRestringido(player,LEFT))
+      case 'A': if(checkTerrain(player,LEFT))
                   move(LEFT);
                 break;
       case 's':
-      case 'S': if(revisaRestringido(player,DOWN))
+      case 'S': if(checkTerrain(player,DOWN))
                   move(DOWN);
                 break;
       case 'd':
-      case 'D': if(revisaRestringido(player,RIGHT))
+      case 'D': if(checkTerrain(player,RIGHT))
                   move(RIGHT);
                 break;
       case 'q':
-      case 'Q': toggleBlur();
-                tint(255,128);
-                image(imgblur,400,400);
-                noTint();
-                gc.setActiveScreen(PAUSE);
+      case 'Q': gc.setActiveScreen(PAUSE);
                 break;
       case ' ': if(map[player.py][player.px]==SHOP){
                   gc.musicManager(MSCOFF);
@@ -142,7 +138,7 @@ class MapScreen{
     }
   }
   
-  boolean revisaRestringido(Character p,int d){
+  boolean checkTerrain(Character p,int d){
     boolean r=false;
     switch(d){
       case UP:    r=map[p.py-1][p.px]!=WATER;
@@ -160,21 +156,21 @@ class MapScreen{
   void move(int d){
     player.move(d);
     player.setTerrain(map[player.py][player.px]);
-    if(generaCombate()){
+    if(spawnCombat()){
       sfxfight.play();
       gc.musicManager(MSCOFF);
       gc.setActiveScreen(COMBAT);
     }  
   }
   
-  boolean generaCombate(){
+  boolean spawnCombat(){
     boolean r=false;
     switch(player.terr){
-      case FOREST: r=random(1,100)<cf.bsqodd;
+      case FOREST: r=random(1,100)<cf.inForest;
                   break;
-      case GRASS: r=random(1,100)<cf.pstodd;
+      case GRASS: r=random(1,100)<cf.inGrass;
                   break;
-      case GROUND: r=random(1,100)<cf.trrodd;
+      case GROUND: r=random(1,100)<cf.inGround;
                   break;
     }
     return r;

@@ -5,31 +5,28 @@
 //comentario:
 
 class StoreScreen{
-  
-  Button btncomp;
-  Button btnvend;
-  Button btncont;
+  Button buy;
+  Button sell;
+  Button back;
   ClickItem citpotn;
   ClickItem citfptn;
   ClickItem cittonic;
+  
   PImage tienda;
   PImage imgtrademode;
   boolean trademode;   //TMBUY=el jugador VENDE, TMSELL=el jugador COMPRA
   
   StoreScreen(){
-    btncomp=new Button(200,600,200,100,24);
-    btnvend=new Button(600,600,200,100,25);
-    btncont=new Button(400,720,200,100,5);
-    btncomp.activate();
-    btnvend.activate();
-    btncont.activate();
+    buy=new Button(200,600,200,100,24);
+    sell=new Button(600,600,200,100,25);
+    back=new Button(400,720,200,100,5);
     citpotn=new ClickItem(300,270,50,50,ITPTN);
     citfptn=new ClickItem(400,270,50,50,ITFPT);
     cittonic=new ClickItem(500,270,50,50,ITTNC);
     tienda=loadImage("sprite/backgr/store_ok.png");
     imgtrademode=loadImage("sprite/items/trademode.png");
     trademode=TMBUY;
-    btncomp.toggleMark();
+    buy.toggleMark();
   }
   
   void display(){
@@ -40,9 +37,9 @@ class StoreScreen{
     citpotn.display();
     citfptn.display();
     cittonic.display();
-    btncomp.display();
-    btnvend.display();
-    btncont.display();
+    buy.display();
+    sell.display();
+    back.display();
     player.drawTradeData();
     if(trademode)
       flipYImage(imgtrademode,400,400);
@@ -65,17 +62,17 @@ class StoreScreen{
   }
   
   void mouseProcess(int x,int y, int b){
-    if(btncomp.isClicked(x,y) && b==LEFT){
-      btncomp.toggleMark();
-      btnvend.toggleMark();
+    if(buy.isClicked(x,y) && b==LEFT){
+      buy.toggleMark();
+      sell.toggleMark();
       trademode=TMBUY;
     }  
-    if(btnvend.isClicked(x,y) && b==LEFT){
-      btncomp.toggleMark();
-      btnvend.toggleMark();
+    if(sell.isClicked(x,y) && b==LEFT){
+      buy.toggleMark();
+      sell.toggleMark();
       trademode=TMSELL;
     }  
-    if(btncont.isClicked(x,y) && b==LEFT){
+    if(back.isClicked(x,y) && b==LEFT){
       gc.musicManager(MSCOFF);
       gc.setActiveScreen(MAP);
     } 

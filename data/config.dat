@@ -1,11 +1,11 @@
-#language=1
+#language=0
 #langstr=33
 #pointsnotassigned=5
 #minimumpoints=2
 #maximunpoints=7
-#bsqodd=8
-#pstodd=10
-#trrodd=6
+#inForest=8
+#inGrass=10
+#inGround=6
 #cash=300
 #potnv=50
 #fptnv=120

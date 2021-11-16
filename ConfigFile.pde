@@ -11,9 +11,11 @@ class ConfigFile{
   int pointsnotassigned;
   int minimumpoints;
   int maximunpoints;
-  int bsqodd;
-  int pstodd;
-  int trrodd;
+
+  int inForest;
+  int inGrass;
+  int inGround;
+
   int cash;
   int potnv;
   int fptnv;
@@ -43,12 +45,12 @@ class ConfigFile{
         minimumpoints=(int(split(file[i],'=')[1]));  
       if(split(file[i],'=')[0].equals("#maximunpoints"))
         maximunpoints=(int(split(file[i],'=')[1]));
-      if(split(file[i],'=')[0].equals("#bsqodd"))
-        bsqodd=(int(split(file[i],'=')[1]));
-      if(split(file[i],'=')[0].equals("#pstodd"))
-        pstodd=(int(split(file[i],'=')[1]));
-      if(split(file[i],'=')[0].equals("#trrodd"))
-        trrodd=(int(split(file[i],'=')[1]));
+      if(split(file[i],'=')[0].equals("#inForest"))
+        inForest=(int(split(file[i],'=')[1]));
+      if(split(file[i],'=')[0].equals("#inGrass"))
+        inGrass=(int(split(file[i],'=')[1]));
+      if(split(file[i],'=')[0].equals("#inGround"))
+        inGround=(int(split(file[i],'=')[1]));
       if(split(file[i],'=')[0].equals("#cash"))
         cash=(int(split(file[i],'=')[1]));
       if(split(file[i],'=')[0].equals("#potnv"))
@@ -78,9 +80,9 @@ class ConfigFile{
     save=save+"#pointsnotassigned="+pointsnotassigned+";";
     save=save+"#minimumpoints="+minimumpoints+";";
     save=save+"#maximunpoints="+maximunpoints+";";
-    save=save+"#bsqodd="+bsqodd+";";
-    save=save+"#pstodd="+pstodd+";";
-    save=save+"#trrodd="+trrodd+";";
+    save=save+"#inForest="+inForest+";";
+    save=save+"#inGrass="+inGrass+";";
+    save=save+"#inGround="+inGround+";";
     save=save+"#cash="+cash+";";
     save=save+"#potnv="+potnv+";";
     save=save+"#fptnv="+fptnv+";";

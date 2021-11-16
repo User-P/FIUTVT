@@ -5,13 +5,15 @@
 //comentario:
 
 class CombatScreen{
-  PImage pasto;
-  PImage desrt;
-  PImage woods;
-  Button btnback;
-  Button btnatk;
-  Button btndef;
+  PImage grass;
+  PImage ground;
+  PImage forest;
+
+  Button back;
+  Button attack;
+  Button defense;
   Button btnitem;
+  
   boolean battleactive;
   boolean actionactive;
   Enemigo enemy;
@@ -20,14 +22,13 @@ class CombatScreen{
   int action;
   
   CombatScreen(){
-    pasto=loadImage("sprite/backgr/pasto_ok.png");
-    desrt=loadImage("sprite/backgr/desierto_ok.png");
-    woods=loadImage("sprite/backgr/bosque_ok.png");
-    btnback=new Button(400,700,200,100,23);
-    btnatk=new Button(150,550,150,80,30);
-    btndef=new Button(400,550,150,80,31);
+    grass=loadImage("sprite/backgr/pasto_ok.png");
+    ground=loadImage("sprite/backgr/desierto_ok.png");
+    forest=loadImage("sprite/backgr/bosque_ok.png");
+    back=new Button(400,700,200,100,23);
+    attack=new Button(150,550,150,80,30);
+    defense=new Button(400,550,150,80,31);
     btnitem=new Button(650,550,150,80,32);
-    btnback.activate();
     battleactive=BATTLEOFF;
     actionactive=ACTOFF;
     cdt=new CoolDownTimer(180);
@@ -45,8 +46,8 @@ class CombatScreen{
     if(cdt.isActive())
       cdt.coolingDown();    
     if(player.cdtturn.isOff()){
-      btnatk.activate();
-      btndef.activate();
+      attack.activate();
+      defense.activate();
       btnitem.activate();
       if(enemy.cdtturn.isActive())
         enemy.cdtturn.toggleCoolDown();
@@ -68,11 +69,11 @@ class CombatScreen{
   
   void selectBackgr(int t){
     switch(t){
-      case FOREST: background(woods);
+      case FOREST: background(forest);
                   break;
-      case GRASS: background(pasto);
+      case GRASS: background(grass);
                   break;
-      case GROUND: background(desrt);
+      case GROUND: background(ground);
                   break;            
     }
   }
@@ -85,9 +86,9 @@ class CombatScreen{
   void displayPlanoHUD(){}
   
   void displayPlanoControl(){
-    btnback.display();
-    btnatk.display();
-    btndef.display();
+    back.display();
+    attack.display();
+    defense.display();
     btnitem.display();
   }
   
@@ -96,20 +97,20 @@ class CombatScreen{
   }
   
   void mouseProcess(int x,int y,int b){
-    if(btnback.isClicked(x,y) && b==LEFT){
+    if(back.isClicked(x,y) && b==LEFT){
       gc.musicManager(MSCOFF);
       battleactive=BATTLEOFF;
       gc.setActiveScreen(MAP);
     }
-    if(!actionactive && btnatk.isClicked(x,y) && b==LEFT){
+    if(!actionactive && attack.isClicked(x,y) && b==LEFT){
       println("ataque");
-      btnatk.toggleMark();
+      attack.toggleMark();
       toggleAction();
       combatAction(ACATK);
     }
-    if(!actionactive && btndef.isClicked(x,y) && b==LEFT){
+    if(!actionactive && defense.isClicked(x,y) && b==LEFT){
       println("defensa");
-      btndef.toggleMark();
+      defense.toggleMark();
       toggleAction();
       combatAction(ACDEF);
     }
@@ -143,10 +144,10 @@ class CombatScreen{
     action=a;
     switch(action){
       case ACATK: println("acción de ataque");
-                  //btnatk.toggleMark(); 
+                  //attack.toggleMark(); 
                   break;
       case ACDEF: println("acción defensiva"); 
-                  //btndef.toggleMark();
+                  //defense.toggleMark();
                   break;
       case ACITM: println("acción de item");
                   //btnitem.toggleMark();
@@ -156,8 +157,8 @@ class CombatScreen{
   
   void endAction(){
     println("fin de acción");
-    btnatk.deactivate();
-    btndef.deactivate();
+    attack.deactivate();
+    defense.deactivate();
     btnitem.deactivate();
     toggleMarks();
     player.cdtturn.activate();
@@ -185,8 +186,8 @@ class CombatScreen{
   
   void toggleMarks(){
     switch(action){
-      case ACATK: btnatk.toggleMark(); break;
-      case ACDEF: btndef.toggleMark(); break;
+      case ACATK: attack.toggleMark(); break;
+      case ACDEF: defense.toggleMark(); break;
       case ACITM: btnitem.toggleMark();
     }
   }

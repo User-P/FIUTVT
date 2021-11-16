@@ -12,19 +12,19 @@ class Enemigo{
   int lvl;  //nivel del enemigo
   int cx;   //posición x en combate
   int cy;   //posicion y en combate
-  int terr; //terrain que pisa
+  int terrain; //terrain que pisa
   int cash; //cuanto dinero da al ser vencido
   CoolDownTimer cdtturn; //turno del enemigo
   
   Enemigo(int t){
     cx=200;
     cy=350;
-    terr=t;
+    terrain=t;
     cdtturn=new CoolDownTimer(cf.cdtenemy);
   }
   
   void display(){
-    switch(terr){
+    switch(terrain){
       case FOREST: fill(color(0,120,0));stroke(color(0,120,0));break;
       case GRASS: fill(color(0,200,0));stroke(color(0,200,0));break;
       case GROUND: fill(color(170,0,0));stroke(color(170,0,0));break;

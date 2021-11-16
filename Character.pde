@@ -19,7 +19,7 @@ class Character{
   
   int cx;  
   int cy;  
-  int terr; 
+  int terrain; 
   int cash; 
   CoolDownTimer cdtturn;
   int potn;
@@ -38,7 +38,7 @@ class Character{
     py=y;
     cx=600;
     cy=350;
-    terr=GRASS;
+    terrain=GRASS;
     cash=c;
     potn=0;
     fptn=0;
@@ -95,7 +95,7 @@ class Character{
   }
   
   void setTerrain(int t){
-    terr=t;  
+    terrain=t;  
   }
   
   void drawLifeBar(int x,int y){

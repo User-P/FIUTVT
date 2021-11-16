@@ -37,7 +37,7 @@ class CombatScreen{
   void display(){
     music();
     startBattle();
-    selectBackgr(player.terr);
+    selectBackgr(player.terrain);
     fill(255);
     text(lf.showString(7),400,100);
     displayPlanoControl();
@@ -133,7 +133,7 @@ class CombatScreen{
   }
   
   void createEnemies(){
-    enemy=new Enemigo(player.terr);  
+    enemy=new Enemigo(player.terrain);  
   }
   
   void toggleAction(){

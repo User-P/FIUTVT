@@ -165,7 +165,7 @@ class MapScreen{
   
   boolean spawnCombat(){
     boolean r=false;
-    switch(player.terr){
+    switch(player.terrain){
       case FOREST: r=random(1,100)<cf.inForest;
                   break;
       case GRASS: r=random(1,100)<cf.inGrass;

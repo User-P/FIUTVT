@@ -43,13 +43,13 @@ class MapScreen{
     text(lf.showString(14),400,100);
     rectMode(CENTER);
     imageMode(CENTER);
-    displayPlanomap();
-    displayPlanoPers();
-    displayPlanoSky();
-    displayPlanoHUD(); //Heads-Up Display
+    displayPlaneMap();
+    displayPlaneCharacter();
+    displayPlaneSky();
+    displayPlaneHUD();
   }
   
-  void displayPlanomap(){
+  void displayPlaneMap(){
     for(int i=0;i<mx;i++)
       for(int j=0;j<my;j++)
         if(gmode)
@@ -61,11 +61,11 @@ class MapScreen{
         }
   }
   
-  void displayPlanoPers(){
+  void displayPlaneCharacter(){
     player.display();
   }
   
-  void displayPlanoSky(){
+  void displayPlaneSky(){
     if(gmode){
       tint(255,64);
       image(imgsky,400,400);
@@ -74,7 +74,7 @@ class MapScreen{
     }  
   }
   
-  void displayPlanoHUD(){
+  void displayPlaneHUD(){
     image(imgcash,50,740);
     image(imgatk,130,740);
     image(imgdef,210,740);

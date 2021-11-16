@@ -11,8 +11,8 @@ class SpriteSet{
   int size;
   int framecount;
   int framelimit;
-  int spr;
-  boolean onan;
+  int currentsprite;
+  boolean animation;
   
   SpriteSet(String r, String n,String f,int s,int fl,boolean oa, int sp){
     route=r;
@@ -21,8 +21,8 @@ class SpriteSet{
     size=s;
     framelimit=fl;
     framecount=0;
-    spr=sp;
-    onan=oa;
+    currentsprite=sp;
+    animation=oa;
     sprite=new PImage[size];
     for(int i=0;i<size;i++)
       sprite[i]=loadImage(route+name+i+format);
@@ -30,10 +30,10 @@ class SpriteSet{
   
   void controlAnimacion(){
     if(framecount==framelimit){
-      if(spr<size-1)
-        spr++;
+      if(currentsprite<size-1)
+        currentsprite++;
       else
-        spr=0;
+        currentsprite=0;
       framecount=0;  
     }
     else
@@ -41,21 +41,21 @@ class SpriteSet{
   }
   
   void display(int x,int y,int w,int h){
-    image(sprite[spr],x,y,w,h);
-    if(onan)
+    image(sprite[currentsprite],x,y,w,h);
+    if(animation)
       controlAnimacion();
   }
   
   void flipDisplay(int x,int y,int w,int h){
     pushMatrix();
     scale(-1,1);
-    image(sprite[spr],-x,y,w,h);
+    image(sprite[currentsprite],-x,y,w,h);
     popMatrix();
-    if(onan)
+    if(animation)
       controlAnimacion();
   }
   
   void toggleAnimation(){
-    onan=!onan;
+    animation=!animation;
   }
 }

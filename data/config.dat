@@ -1,4 +1,4 @@
-#language=0
+#language=1
 #langstr=33
 #pointsnotassigned=5
 #minimumpoints=2
@@ -7,12 +7,12 @@
 #inGrass=10
 #inGround=6
 #cash=300
-#potnv=50
-#fptnv=120
-#tonicv=200
-#potnc=40
-#fptnc=96
-#tonicc=160
+#potionsale=50
+#fullpotionsale=120
+#tonicsale=200
+#potionpurchase=40
+#fullpotionpurchase=96
+#tonicpurchase=160
 #cdtenemy=240
 #cdtplayr=180
 

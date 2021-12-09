@@ -17,12 +17,15 @@ class ConfigFile{
   int inGround;
 
   int cash;
-  int potnv;
-  int fptnv;
-  int tonicv;
-  int potnc;
-  int fptnc;
-  int tonicc;
+
+  int potionsale;
+  int fullpotionsale;
+  int tonicsale;
+
+  int potionpurchase;
+  int fullpotionpurchase;
+  int tonicpurchase;
+
   int cdtenemy;
   int cdtplayr;
   
@@ -53,18 +56,18 @@ class ConfigFile{
         inGround=(int(split(file[i],'=')[1]));
       if(split(file[i],'=')[0].equals("#cash"))
         cash=(int(split(file[i],'=')[1]));
-      if(split(file[i],'=')[0].equals("#potnv"))
-        potnv=(int(split(file[i],'=')[1]));
-      if(split(file[i],'=')[0].equals("#fptnv"))
-        fptnv=(int(split(file[i],'=')[1]));
-      if(split(file[i],'=')[0].equals("#tonicv"))
-        tonicv=(int(split(file[i],'=')[1]));
-      if(split(file[i],'=')[0].equals("#potnc"))
-        potnc=(int(split(file[i],'=')[1]));
-      if(split(file[i],'=')[0].equals("#fptnc"))
-        fptnc=(int(split(file[i],'=')[1]));
-      if(split(file[i],'=')[0].equals("#tonicc"))
-        tonicc=(int(split(file[i],'=')[1]));
+      if(split(file[i],'=')[0].equals("#potionsale"))
+        potionsale=(int(split(file[i],'=')[1]));
+      if(split(file[i],'=')[0].equals("#fullpotionsale"))
+        fullpotionsale=(int(split(file[i],'=')[1]));
+      if(split(file[i],'=')[0].equals("#tonicsale"))
+        tonicsale=(int(split(file[i],'=')[1]));
+      if(split(file[i],'=')[0].equals("#potionpurchase"))
+        potionpurchase=(int(split(file[i],'=')[1]));
+      if(split(file[i],'=')[0].equals("#fullpotionpurchase"))
+        fullpotionpurchase=(int(split(file[i],'=')[1]));
+      if(split(file[i],'=')[0].equals("#tonicpurchase"))
+        tonicpurchase=(int(split(file[i],'=')[1]));
       if(split(file[i],'=')[0].equals("#cdtenemy"))
         cdtenemy=(int(split(file[i],'=')[1]));
       if(split(file[i],'=')[0].equals("#cdtplayr"))
@@ -84,12 +87,12 @@ class ConfigFile{
     save=save+"#inGrass="+inGrass+";";
     save=save+"#inGround="+inGround+";";
     save=save+"#cash="+cash+";";
-    save=save+"#potnv="+potnv+";";
-    save=save+"#fptnv="+fptnv+";";
-    save=save+"#tonicv="+tonicv+";";
-    save=save+"#potnc="+potnc+";";
-    save=save+"#fptnc="+fptnc+";";
-    save=save+"#tonicc="+tonicc+";";
+    save=save+"#potionsale="+potionsale+";";
+    save=save+"#fullpotionsale="+fullpotionsale+";";
+    save=save+"#tonicsale="+tonicsale+";";
+    save=save+"#potionpurchase="+potionpurchase+";";
+    save=save+"#fullpotionpurchase="+fullpotionpurchase+";";
+    save=save+"#tonicpurchase="+tonicpurchase+";";
     save=save+"#cdtenemy="+cdtenemy+";";
     save=save+"#cdtplayr="+cdtplayr+";";
     file=split(save,';');

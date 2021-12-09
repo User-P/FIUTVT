@@ -22,8 +22,9 @@ class Character{
   int terrain; 
   int cash; 
   CoolDownTimer cdtturn;
-  int potn;
-  int fptn;
+
+  int potion;
+  int fullpotion;
   int tonic;
   
   Character(int a,int d,int h,int c,int x,int y){
@@ -40,8 +41,8 @@ class Character{
     cy=350;
     terrain=GRASS;
     cash=c;
-    potn=0;
-    fptn=0;
+    potion=0;
+    fullpotion=0;
     tonic=0;
     cdtturn=new CoolDownTimer(cf.cdtplayr);
   }
@@ -116,20 +117,20 @@ class Character{
     image(imgtonic,520,470);
     fill(255);
     text("$"+cash,280,510);
-    text(potn,360,510);
-    text(fptn,440,510);
+    text(potion,360,510);
+    text(fullpotion,440,510);
     text(tonic,520,510);
     textAlign(CENTER,CENTER);
   }
   
   int getItemInv(int i){
-    return (i==ITPTN?potn:(i==ITFPT?fptn:tonic));
+    return (i==ITPTN?potion:(i==ITFPT?fullpotion:tonic));
   }
   
   void updateInv(int i,boolean tm){
     switch(i){
-      case ITPTN: potn+=tm?1:-1; break;
-      case ITFPT: fptn+=tm?1:-1; break;
+      case ITPTN: potion+=tm?1:-1; break;
+      case ITFPT: fullpotion+=tm?1:-1; break;
       case ITTNC: tonic+=tm?1:-1; break;
     }
   }

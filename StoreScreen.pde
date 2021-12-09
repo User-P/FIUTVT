@@ -8,6 +8,7 @@ class StoreScreen{
   Button buy;
   Button sell;
   Button back;
+
   ClickItem citpotn;
   ClickItem citfptn;
   ClickItem cittonic;
@@ -34,20 +35,23 @@ class StoreScreen{
     background(tienda);
     fill(255);
     text(lf.showString(16),400,100);
+
     citpotn.display();
     citfptn.display();
     cittonic.display();
+
     buy.display();
     sell.display();
     back.display();
+    
     player.drawTradeData();
     if(trademode)
       flipYImage(imgtrademode,400,400);
     else
       image(imgtrademode,400,400);
-    text("$"+(trademode?cf.potnv:cf.potnc),300,300);
-    text("$"+(trademode?cf.fptnv:cf.fptnc),400,300);
-    text("$"+(trademode?cf.tonicv:cf.tonicc),500,300);
+    text("$"+(trademode?cf.potionsale:cf.potionpurchase),300,300);
+    text("$"+(trademode?cf.fullpotionsale:cf.fullpotionpurchase),400,300);
+    text("$"+(trademode?cf.tonicsale:cf.tonicpurchase),500,300);
   }
   
   void toggleTM(){
@@ -111,11 +115,11 @@ class StoreScreen{
   }
   
   int getItemVCost(int i){
-    return ((i==ITPTN?cf.potnv:(i==ITFPT)?cf.fptnv:cf.tonicv));
+    return ((i==ITPTN?cf.potionsale:(i==ITFPT)?cf.fullpotionsale:cf.tonicsale));
   }
   
   int getItemCCost(int i){
-    return ((i==ITPTN?cf.potnc:(i==ITFPT)?cf.fptnc:cf.tonicc));
+    return ((i==ITPTN?cf.potionpurchase:(i==ITFPT)?cf.fullpotionpurchase:cf.tonicpurchase));
   }
   
 }

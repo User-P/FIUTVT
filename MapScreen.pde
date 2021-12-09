@@ -86,8 +86,8 @@ class MapScreen{
     text("$"+player.cash,50,780);
     text(player.atk,130,780);
     text(player.def,210,780);
-    text(player.potn,590,780);
-    text(player.fptn,670,780);
+    text(player.potion,590,780);
+    text(player.fullpotion,670,780);
     text(player.tonic,750,780);
     textAlign(LEFT,CENTER);
     text(player.hp+"/"+player.hpp,315,740);

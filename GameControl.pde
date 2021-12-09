@@ -17,7 +17,8 @@ class GameControl{
   PauseScreen pause;
   StoreScreen store;
   int activeScreen;
-  boolean musicon;
+
+  boolean music;
   
   GameControl(){
     loading=new LoadingScreen();
@@ -32,7 +33,7 @@ class GameControl{
     pause=new PauseScreen();
     store=new StoreScreen();
     activeScreen=LOADING;
-    musicon=false;
+    music=false;
   }
   
   void display(){
@@ -113,8 +114,8 @@ class GameControl{
   }
   
   void musicManager(boolean s){
-    musicon=s;
-    playTrack((musicon?activeScreen:0));
+    music=s;
+    playTrack((music?activeScreen:0));
   }
   
   void playTrack(int t){
@@ -127,6 +128,6 @@ class GameControl{
   }
   
   boolean getMusicStatus(){
-    return musicon;
+    return music;
   }
 }

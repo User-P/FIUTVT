@@ -38,18 +38,23 @@ final int SHOP=4;
 
 final boolean MSCON=true;
 final boolean MSCOFF=false;
+//items
 final int ITPTN=0;
 final int ITFPT=1;
 final int ITTNC=2;
+//trademode mode
 final boolean TMBUY=true;
 final boolean TMSELL=false;
+
 final boolean BATTLEON=true;
 final boolean BATTLEOFF=false;
+
 final boolean ACTON=true;
 final boolean ACTOFF=false;
 final int ACATK=0;
 final int ACDEF=1;
 final int ACITM=2;
+
 final boolean TURNP=true;
 final boolean TURNE=false;
 
@@ -59,6 +64,7 @@ PImage imgbackgr;
 PImage imgatk;
 PImage imgdef;
 PImage imghp;
+
 PImage imgpotn;
 PImage imgfptn;
 PImage imgtonic;
@@ -74,6 +80,7 @@ AudioPlayer msccreat;
 AudioPlayer mscvctry;
 AudioPlayer msccombt;
 AudioPlayer mscmundo;
+
 SoundFile sfxfight; 
 SoundFile sfxclick;
 SoundFile sfxcash;
@@ -97,10 +104,12 @@ void setup(){
   imgatk=loadImage("sprite/icon/icon_atk.png");
   imgdef=loadImage("sprite/icon/icon_def.png");
   imghp=loadImage("sprite/icon/icon_hpm.png");
+
   imgpotn=loadImage("sprite/items/potion.png");
   imgfptn=loadImage("sprite/items/full potion.png");
   imgtonic=loadImage("sprite/items/tonic.png");
   imgcash=loadImage("sprite/items/cash.png");
+
   imgbackgr=loadImage("sprite/backgr/backgr.png");
   cf=new ConfigFile();
   lf=new LangFiles(cf.lang,cf.ns);

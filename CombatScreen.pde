@@ -16,7 +16,9 @@ class CombatScreen{
   
   boolean battleactive;
   boolean actionactive;
-  Enemigo enemy;
+  
+  Enemy enemy;
+  
   CoolDownTimer cdt;
   boolean turn;
   int action;
@@ -133,7 +135,7 @@ class CombatScreen{
   }
   
   void createEnemies(){
-    enemy=new Enemigo(player.terrain);  
+    enemy=new Enemy(player.terrain);  
   }
   
   void toggleAction(){

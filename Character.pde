@@ -19,6 +19,7 @@ class Character{
   
   int cx;  
   int cy;  
+  
   int terrain; 
   int cash; 
   CoolDownTimer cdtturn;

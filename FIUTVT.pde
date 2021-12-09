@@ -41,10 +41,13 @@ final boolean MSCOFF=false;
 final int ITPTN=0;
 final int ITFPT=1;
 final int ITTNC=2;
+
 final boolean TMBUY=true;
 final boolean TMSELL=false;
+
 final boolean BATTLEON=true;
 final boolean BATTLEOFF=false;
+
 final boolean ACTON=true;
 final boolean ACTOFF=false;
 final int ACATK=0;
@@ -74,6 +77,7 @@ AudioPlayer msccreat;
 AudioPlayer mscvctry;
 AudioPlayer msccombt;
 AudioPlayer mscmundo;
+
 SoundFile sfxfight; 
 SoundFile sfxclick;
 SoundFile sfxcash;

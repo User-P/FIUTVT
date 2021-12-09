@@ -1,9 +1,9 @@
-//Modulo Enemigo 
+//Modulo Enemy 
 //elaborado por: Pedro Angel Gomez Dimas
 //fecha de creación: 8 de noviembre de 2021 
 //fecha de ultima modificación: 12 de noviembre de 2021 
 //comentario:
-class Enemigo{
+class Enemy{
   int atk;  //puntos de ataque
   int def;  //puntos de defensa
   int hp;   //puntos de vida actuales
@@ -16,7 +16,7 @@ class Enemigo{
   int cash; //cuanto dinero da al ser vencido
   CoolDownTimer cdtturn; //turno del enemigo
   
-  Enemigo(int t){
+  Enemy(int t){
     cx=200;
     cy=350;
     terrain=t;
